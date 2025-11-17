@@ -63,7 +63,6 @@ export default function AnteiCard() {
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">
           <ProjectMediaCarousel
-            title="See Antei Website in Action"
             mediaItems={anteiMedia}
             ariaLabel="Antei website demo carousel"
           />

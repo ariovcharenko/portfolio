@@ -89,7 +89,6 @@ export default function PitchPalCard() {
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">
           <ProjectMediaCarousel
-            title="See PitchPal in Action"
             mediaItems={pitchPalMedia}
             ariaLabel="PitchPal demo carousel"
             unmutedVideoIndices={[4]} // pitchpal-interactive.mp4 (index 4) should have sound

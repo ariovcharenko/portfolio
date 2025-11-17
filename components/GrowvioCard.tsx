@@ -83,7 +83,6 @@ export default function GrowvioCard() {
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">
           <ProjectMediaCarousel
-            title="See Growvio in Action"
             mediaItems={growvioMedia}
             ariaLabel="Growvio demo carousel"
             // All videos muted by default (growvio-demo.mp4 at index 0 is muted)

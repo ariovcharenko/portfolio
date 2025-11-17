@@ -111,14 +111,12 @@ export default function PlatformProjectCard({
                     className="w-3 h-3 ml-1 transition-transform group-hover/link:translate-x-1"
                     fill="none"
                     stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
                     viewBox="0 0 24 24"
                   >
-                    <path
-                      strokeCap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+                    <path d="M9 5l7 7-7 7" />
                   </svg>
                 </a>
               ))}

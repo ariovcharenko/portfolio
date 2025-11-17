@@ -68,7 +68,6 @@ export default function SearchAnalysisCard() {
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">
           <ProjectMediaCarousel
-            title="See Search Analysis App in Action"
             mediaItems={searchAnalysisMedia}
             ariaLabel="Search Analysis App demo carousel"
           />

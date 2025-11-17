@@ -68,7 +68,6 @@ export default function ChemECarCard() {
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">
           <ProjectMediaCarousel
-            title="See Chem-E-Car Website in Action"
             mediaItems={chemECarMedia}
             ariaLabel="Chem-E-Car website demo carousel"
           />
