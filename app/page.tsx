@@ -3,13 +3,9 @@
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Section from "@/components/Section";
-import ProjectCard from "@/components/ProjectCard";
-import HighlightCard from "@/components/HighlightCard";
-import PitchPalCard from "@/components/PitchPalCard";
-import GrowvioCard from "@/components/GrowvioCard";
-import SearchAnalysisCard from "@/components/SearchAnalysisCard";
-import AnteiCard from "@/components/AnteiCard";
-import ChemECarCard from "@/components/ChemECarCard";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
+import PlatformProjectCard from "@/components/PlatformProjectCard";
+import { MediaItem } from "@/components/ProjectMediaCarousel";
 
 export default function Home() {
   return (
@@ -17,32 +13,25 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20 md:pt-40 md:pb-32 border-b border-gray-100 relative overflow-hidden">
-        {/* Subtle gradient blobs */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full blur-3xl opacity-30 gradient-blob"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full blur-3xl opacity-20 gradient-blob" style={{ animationDelay: '2s' }}></div>
-        
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+      <section id="home" className="py-24 lg:py-32 border-b border-neutral-200">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left side - Editorial text */}
             <div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-charcoal mb-6 leading-tight">
+              {/* Name headline - smaller, more subtle */}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-charcoal leading-tight">
                 Arina Ovcharenko
               </h1>
-              <h2 className="text-xl md:text-2xl text-gray-600 mb-6 font-medium">
-                AI Engineer & Product Developer
-              </h2>
-              <p className="text-base sm:text-lg text-gray-700 mb-8 leading-relaxed">
-                I build AI-powered products, evaluation frameworks, and clean user interfaces for
-                startups and research teams.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+
+              {/* Buttons - Black/neutral style */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 <a
                   href="#projects"
                   onClick={(e) => {
                     e.preventDefault();
                     document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="px-8 py-3 bg-accent text-white rounded-full hover:bg-blue-600 transition-colors text-center font-medium shadow-soft hover:shadow-lg"
+                  className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 transition"
                 >
                   View Projects
                 </a>
@@ -50,88 +39,250 @@ export default function Home() {
                   href="/resume/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-3 border-2 border-gray-300 text-charcoal rounded-full hover:bg-lightGrey transition-colors text-center font-medium"
+                  className="inline-flex items-center justify-center rounded-full border border-neutral-900 px-6 py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-100 transition"
                 >
                   View Resume
                 </a>
               </div>
+
+              {/* Meta line */}
+              <p className="text-xs text-neutral-500 mt-3 sm:mt-4">
+                Based in Chicago
+              </p>
             </div>
-            <div className="space-y-6">
-              <div className="flex justify-center">
-                <div className="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden relative bg-white border border-gray-200 shadow-card">
-                  <Image
-                    src="/images/me.jpeg"
-                    alt="Arina Ovcharenko"
-                    width={256}
-                    height={256}
-                    className="w-full h-full object-cover"
-                    style={{ objectPosition: 'center 25%' }}
-                    priority
-                  />
-                </div>
-              </div>
-              <div className="text-center space-y-2">
-                <p className="text-gray-600 font-medium">Based in Chicago</p>
-                <p className="text-gray-600">Open to AI startup internships – Summer 2026</p>
+
+            {/* Right side - Large portrait card */}
+            <div className="relative">
+              <div className="relative rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden aspect-square">
+                <Image
+                  src="/images/me.jpeg"
+                  alt="Arina Ovcharenko"
+                  fill
+                  className="object-cover"
+                  style={{ objectPosition: 'center 20%' }}
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* AI Products Section */}
-      <Section id="ai-products" title="AI Products and Startups">
-        <div className="space-y-12 md:space-y-16">
-          <PitchPalCard />
-          <GrowvioCard />
-        </div>
-      </Section>
-
-      {/* AI & Evaluation Projects */}
-      <Section id="projects" title="AI and Evaluation Projects">
+      {/* Projects Section - Platform Style */}
+      <Section id="projects">
+        <ScrollFadeIn>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-charcoal mb-8 lg:mb-12">
+            Selected Projects
+          </h2>
+        </ScrollFadeIn>
         <div className="space-y-8 md:space-y-12">
-          <SearchAnalysisCard />
-        </div>
-      </Section>
-
-      {/* Web Apps and Interfaces */}
-      <Section id="web-apps" title="Web Apps and Interfaces">
-        <div className="space-y-8 md:space-y-12">
-          <ProjectCard
-            title="IT Ticket Management App"
-            description="A Java-based ticketing system with MySQL backend and role-based access."
+          {/* PitchPal */}
+          <PlatformProjectCard
+            category="AI Product · Interview Simulator"
+            title="PitchPal"
+            description="Voice + coding interview simulator for realistic practice. Built React frontend, Spring Boot backend with WebSockets, and integrated AI logic to adapt questions based on user responses."
             bullets={[
-              "Created database tables in MySQL Workbench for trouble tickets and user credentials.",
-              "Implemented a Java GUI with login and role-based access (admin vs regular users).",
-              "Enabled CRUD operations for admins and scoped access for regular users.",
+              "Built React frontend for resume upload, interview setup, and adaptive question flow",
+              "Implemented Spring Boot backend with REST APIs, WebSockets, and secure JWT authentication",
+              "Integrated AI logic to adapt questions based on user responses",
             ]}
-            techTags={["Java", "MySQL", "Desktop App"]}
-            images={[
-              { src: "/images/sql1.jpeg", alt: "IT Ticket App – Login screen" },
-              { src: "/images/sql2.jpeg", alt: "IT Ticket App – Admin ticket list" },
+            mediaItems={[
+              { type: "video", src: "/videos/pitchpal-demo.mp4", label: "Log in & Setup" },
+              { type: "image", src: "/images/pitchpal2.png", label: "Dashboard Overview" },
+              { type: "image", src: "/images/pitchpal3.png", label: "Real-time Insights" },
+              { type: "image", src: "/images/pitchpal4.png", label: "Interview Setup" },
+              { type: "video", src: "/videos/pitchpal-interactive.mp4", label: "Interactive Experience" },
+              { type: "image", src: "/images/pitchpal6.png", label: "Analytics View" },
+              { type: "image", src: "/images/pitchpal7.png", label: "Performance Metrics" },
+            ]}
+            unmutedVideoIndices={[4]}
+          />
+
+          {/* Growvio */}
+          <PlatformProjectCard
+            category="AI Product · Business Growth"
+            title="Growvio"
+            description="AI that generates daily tasks to help founders grow their business. Co-founded product, led React frontend, and created branding and social media content."
+            bullets={[
+              "Co-founded product and led React frontend for dashboards and task views",
+              "Built UI for daily AI-generated tasks and progress tracking",
+              "Created branding and social media content to support growth",
+            ]}
+            mediaItems={[
+              { type: "video", src: "/videos/growvio-demo.mp4", label: "Growvio Overview" },
+              { type: "image", src: "/images/growvio2.png", label: "Dashboard View" },
+              { type: "image", src: "/images/growvio3.png", label: "Task Management" },
+              { type: "image", src: "/images/growvio4.png", label: "AI-Generated Tasks" },
+              { type: "image", src: "/images/growvio5.png", label: "Progress Tracking" },
+              { type: "image", src: "/images/growvio6.png", label: "Analytics Dashboard" },
+            ]}
+            links={[
+              { label: "Visit Website", href: "https://growvio.app" },
+              { label: "Instagram", href: "https://www.instagram.com/growvio.app/" },
             ]}
           />
-          <AnteiCard />
-          <ChemECarCard />
-        </div>
-      </Section>
 
-      {/* Research Section */}
-      <Section id="research" title="Research and Experiments">
-        <ProjectCard
-          title="HallwAE – AR Hallway Conversations"
-          description="User research for an augmented reality application that enables spontaneous hallway-style conversations remotely."
-          bullets={[
-            "Gathered user feedback and translated it into actionable research questions.",
-            "Contributed insights to guide product decisions and improve human-computer interaction in AR environments.",
-          ]}
-          techTags={["HCI", "AR", "User Research"]}
-          images={[
-            { src: "/images/hall.jpg", alt: "HallwAE – AR research" },
-            { src: "/images/hall3.jpeg", alt: "HallwAE – AR research" },
-          ]}
-          pdfLink="/attathment/pdfvr.pdf"
-        />
+          {/* Semantic Search Analysis */}
+          <PlatformProjectCard
+            category="AI Product · Evaluation"
+            title="Semantic Search Analysis App"
+            description="An AI-powered product search tool with a custom evaluation framework for semantic understanding. Achieved ~97% match accuracy across 100 user-like queries."
+            bullets={[
+              "Interprets natural language queries and returns relevant product matches using semantic filtering",
+              "Designed a custom evaluation framework comparing AI outputs to manually defined expectations",
+              "Achieved ~97% match accuracy across 100 user-like queries by iteratively refining prompts and normalization logic",
+            ]}
+            mediaItems={[
+              { type: "image", src: "/images/sem-search1.png", label: "Query and results view" },
+              { type: "image", src: "/images/sem-search2.png", label: "Search parameters and filters" },
+              { type: "image", src: "/images/sem-search3.png", label: "Evaluation dashboard" },
+            ]}
+            links={[
+              { label: "View App on GitHub", href: "https://github.com/ariovcharenko/ai-shopping-assistant" },
+              { label: "Read Article: The Power of Evals", href: "https://open.substack.com/pub/ariovcharenko/p/the-power-of-evals-teaching-ai-to?r=5fmti7&utm_campaign=post&utm_medium=web" },
+            ]}
+          />
+
+          {/* HallwAE Research */}
+          <ScrollFadeIn>
+            <div className="group bg-white border border-neutral-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+              {/* Images grid - side by side */}
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-6 lg:px-8">
+                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white aspect-[4/3]">
+                  <Image
+                    src="/images/hall.jpg"
+                    alt="HallwAE – AR research"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white aspect-[4/3]">
+                  <Image
+                    src="/images/hall3.jpeg"
+                    alt="HallwAE – AR research"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
+
+              {/* TEXT AREA */}
+              <div className="p-6 lg:p-8">
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2">
+                  Research · HCI
+                </p>
+                <h3 className="text-xl font-semibold text-charcoal mb-2">HallwAE – AR Hallway Conversations</h3>
+                <p className="text-sm text-neutral-600 mt-1 mb-4 leading-relaxed">
+                  User research for an augmented reality application that enables spontaneous hallway-style conversations remotely.
+                </p>
+                <ul className="list-disc list-inside space-y-1 mb-4 text-xs text-neutral-500">
+                  <li>Gathered user feedback and translated it into actionable research questions</li>
+                  <li>Contributed insights to guide product decisions and improve human-computer interaction in AR environments</li>
+                </ul>
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="/attathment/pdfvr.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-sm font-medium text-charcoal hover:text-neutral-600 transition-colors group/link"
+                  >
+                    View Research Paper
+                    <svg
+                      className="w-3 h-3 ml-1 transition-transform group-hover/link:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M9 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          {/* IT Ticket App */}
+          <ScrollFadeIn>
+            <div className="group bg-white border border-neutral-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
+              {/* Images grid - side by side */}
+              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-6 lg:px-8">
+                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white">
+                  <Image
+                    src="/images/sql1.jpeg"
+                    alt="IT Ticket App – Login screen"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover rounded-3xl"
+                  />
+                </div>
+                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white">
+                  <Image
+                    src="/images/sql2.jpeg"
+                    alt="IT Ticket App – Admin ticket list"
+                    width={800}
+                    height={600}
+                    className="w-full h-auto object-cover rounded-3xl"
+                  />
+                </div>
+              </div>
+
+              {/* TEXT AREA */}
+              <div className="p-6 lg:p-8">
+                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2">
+                  Web App · Desktop
+                </p>
+                <h3 className="text-xl font-semibold text-charcoal mb-2">IT Ticket Management App</h3>
+                <p className="text-sm text-neutral-600 mt-1 mb-4 leading-relaxed">
+                  A Java-based ticketing system with MySQL backend and role-based access.
+                </p>
+                <ul className="list-disc list-inside space-y-1 mb-4 text-xs text-neutral-500">
+                  <li>Created database tables in MySQL Workbench for trouble tickets and user credentials</li>
+                  <li>Implemented a Java GUI with login and role-based access (admin vs regular users)</li>
+                  <li>Enabled CRUD operations for admins and scoped access for regular users</li>
+                </ul>
+              </div>
+            </div>
+          </ScrollFadeIn>
+
+          {/* Antei Website */}
+          <PlatformProjectCard
+            category="Web Design · Marketing"
+            title="Antei Construction Formwork Website"
+            description="A marketing site for a construction formwork rental company, designed and built end-to-end."
+            bullets={[
+              "Designed layout in Figma focused on clarity and navigation",
+              "Implemented custom HTML/CSS and deployed via Hostinger",
+              "Ensured responsive behavior for desktop and mobile",
+            ]}
+            mediaItems={[
+              { type: "image", src: "/images/antei1.jpeg", label: "Homepage" },
+              { type: "image", src: "/images/antei2.jpeg", label: "Product page" },
+            ]}
+          />
+
+          {/* Chem-E-Car Website */}
+          <PlatformProjectCard
+            category="Web Design · Club Website"
+            title="Chem-E-Car Club Website"
+            description="The official website for the Chem-E-Car club, built to improve accessibility and communication."
+            bullets={[
+              "Co-designed and implemented a clean, informative layout for club information and updates",
+              "Optimized for both desktop and mobile devices",
+              "Supported ongoing updates as an active member of the organization",
+            ]}
+            mediaItems={[
+              { type: "image", src: "/images/chem1.jpeg", label: "Homepage" },
+              { type: "image", src: "/images/chem2.jpeg", label: "Club information" },
+              { type: "image", src: "/images/chem3.jpeg", label: "Club updates" },
+            ]}
+          />
+        </div>
       </Section>
 
       {/* Skills Section */}
@@ -260,88 +411,68 @@ export default function Home() {
       </Section>
 
       {/* About Section */}
-      <Section id="about" title="About" className="relative overflow-hidden">
-        {/* Subtle gradient background */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50 rounded-full blur-3xl opacity-40"></div>
-        <div className="relative z-10">
-          <div className="max-w-3xl bg-white border border-gray-200 rounded-xl p-8 shadow-card">
-            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-              I'm an AI engineer and full-stack developer passionate about building AI-powered products
-              and evaluation systems. I care deeply about UI clarity and developer experience,
-              working on both startup projects and research initiatives. My focus is on creating
-              practical, well-designed solutions that solve real problems.
-            </p>
-          </div>
+      <Section id="about" title="About">
+        <div className="max-w-3xl">
+          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed mb-6">
+            I'm an AI engineer and full-stack developer passionate about building AI-powered products
+            and evaluation systems. I care deeply about UI clarity and developer experience,
+            working on both startup projects and research initiatives. My focus is on creating
+            practical, well-designed solutions that solve real problems.
+          </p>
         </div>
       </Section>
 
       {/* Outside of Engineering Section */}
-      <Section id="life-outside-tech" title="Outside of engineering" className="relative overflow-hidden">
-        {/* Subtle gradient background */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-purple-50 rounded-full blur-3xl opacity-30"></div>
-        <div className="relative z-10">
-          <div className="max-w-3xl bg-white border border-gray-200 rounded-xl p-8 shadow-card">
-            <div className="space-y-4">
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                Outside of engineering, I love staying active — I&apos;ve been going to the gym for 4 years, and I&apos;m also on the Illinois Tech Track &amp; Field team, running 100m and 200m sprints. Before that, I trained in acrobatic rock-n-roll for 11 years.
-              </p>
-              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
-                I also studied at an art school and still draw when I have time. I&apos;m interested in philosophy and psychology, and I enjoy learning how people think and make decisions.
-              </p>
-            </div>
+      <Section id="life-outside-tech" title="Outside of engineering">
+        <div className="max-w-3xl">
+          <div className="space-y-4">
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
+              Outside of engineering, I love staying active — I&apos;ve been going to the gym for 4 years, and I&apos;m also on the Illinois Tech Track &amp; Field team, running 100m and 200m sprints. Before that, I trained in acrobatic rock-n-roll for 11 years.
+            </p>
+            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
+              I also studied at an art school and still draw when I have time. I&apos;m interested in philosophy and psychology, and I enjoy learning how people think and make decisions.
+            </p>
           </div>
         </div>
       </Section>
 
       {/* Contact Section */}
-      <Section id="contact" title="Contact" className="relative overflow-hidden">
-        {/* Subtle gradient halo */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-3xl"></div>
-        <div className="relative z-10">
-          <div className="max-w-2xl mx-auto">
-            <p className="text-base sm:text-lg text-gray-700 mb-8 text-center">
-              Interested in working together on AI products or research? Get in touch.
-            </p>
-            <div className="space-y-6">
-              <div className="text-center">
-                <a
-                  href="mailto:arinna.ovcharenko@gmail.com"
-                  className="text-accent hover:text-blue-600 text-lg md:text-xl transition-colors font-medium"
-                >
-                  arinna.ovcharenko@gmail.com
-                </a>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
-                  href="https://www.linkedin.com/in/arina-ovcharenko/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3 bg-accent text-white rounded-full hover:bg-blue-600 transition-colors text-center font-medium shadow-soft hover:shadow-lg"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href="https://github.com/ariovcharenko"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-8 py-3 border-2 border-gray-300 text-charcoal rounded-full hover:bg-lightGrey transition-colors text-center font-medium"
-                >
-                  GitHub
-                </a>
-              </div>
+      <Section id="contact">
+        <div className="max-w-2xl mx-auto text-center">
+          <div className="space-y-6">
+            {/* Email */}
+            <div>
+              <a
+                href="mailto:arinna.ovcharenko@gmail.com"
+                className="inline-flex items-center text-charcoal hover:text-neutral-600 text-lg md:text-xl transition-colors font-medium"
+              >
+                arinna.ovcharenko@gmail.com
+              </a>
+            </div>
+            
+            {/* Social links */}
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href="https://www.linkedin.com/in/arina-ovcharenko/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 transition"
+              >
+                LinkedIn
+              </a>
+              <a
+                href="https://github.com/ariovcharenko"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full border border-neutral-900 px-6 py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-100 transition"
+              >
+                GitHub
+              </a>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 py-8 bg-white">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-500">
-            © {new Date().getFullYear()} Arina Ovcharenko. All rights reserved.
-          </p>
-        </div>
-      </footer>
     </main>
   );
 }

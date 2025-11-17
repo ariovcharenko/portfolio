@@ -1,4 +1,7 @@
+"use client";
+
 import { ReactNode } from "react";
+import ScrollFadeIn from "./ScrollFadeIn";
 
 interface SectionProps {
   id: string;
@@ -9,12 +12,14 @@ interface SectionProps {
 
 export default function Section({ id, title, children, className = "" }: SectionProps) {
   return (
-    <section id={id} className={`py-16 sm:py-24 border-b border-gray-100 ${className}`}>
+    <section id={id} className={`py-16 sm:py-24 border-b border-neutral-200 ${className}`}>
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
         {title && (
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-charcoal mb-12">
-            {title}
-          </h2>
+          <ScrollFadeIn>
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-charcoal mb-12">
+              {title}
+            </h2>
+          </ScrollFadeIn>
         )}
         {children}
       </div>
