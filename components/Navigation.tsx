@@ -35,25 +35,25 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className="fixed top-0 inset-x-0 z-50 border-b border-neutral-900 bg-neutral-950/80 backdrop-blur"
+        className="fixed top-0 inset-x-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm shadow-soft"
       >
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
+          <div className="flex items-center justify-between h-16">
             <a
               href="#home"
               onClick={(e) => handleClick(e, "#home")}
-              className="text-sm font-medium tracking-wide text-gray-100 hover:text-sky-400 transition-colors"
+              className="text-sm font-semibold tracking-wide text-charcoal hover:text-accent transition-colors"
             >
               Arina Ovcharenko
             </a>
             <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-6 text-sm text-gray-300">
+              <div className="hidden sm:flex items-center gap-8 text-sm text-gray-600">
                 {navItems.slice(1).map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleClick(e, item.href)}
-                    className="hover:text-sky-400 transition-colors"
+                    className="hover:text-accent transition-colors font-medium"
                   >
                     {item.label}
                   </a>
@@ -61,7 +61,7 @@ export default function Navigation() {
               </div>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="sm:hidden inline-flex items-center justify-center rounded-full border border-neutral-700 px-3 py-1 text-xs text-gray-200 hover:bg-neutral-800 transition-colors"
+                className="sm:hidden inline-flex items-center justify-center rounded-xl border border-gray-300 px-4 py-2 text-xs text-charcoal hover:bg-lightGrey transition-colors"
                 aria-label="Toggle menu"
               >
                 {isMobileMenuOpen ? "Close" : "Menu"}
@@ -71,13 +71,13 @@ export default function Navigation() {
         </div>
       </nav>
       {isMobileMenuOpen && (
-        <div className="fixed right-4 top-14 z-40 w-40 rounded-xl border border-neutral-800 bg-neutral-950 p-2 flex flex-col gap-1 text-sm sm:hidden">
+        <div className="fixed right-4 top-16 z-40 w-48 rounded-xl border border-gray-200 bg-white shadow-card p-3 flex flex-col gap-2 text-sm sm:hidden">
           {navItems.slice(1).map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className="text-gray-300 hover:text-sky-400 transition-colors px-2 py-1 rounded"
+              className="text-gray-700 hover:text-accent transition-colors px-3 py-2 rounded-lg hover:bg-lightGrey font-medium"
             >
               {item.label}
             </a>

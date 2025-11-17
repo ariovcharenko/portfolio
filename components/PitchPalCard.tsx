@@ -43,23 +43,23 @@ const pitchPalMedia: MediaItem[] = [
 export default function PitchPalCard() {
 
   return (
-    <div className="bg-neutral-900/80 border border-neutral-800 rounded-2xl overflow-hidden hover:border-sky-500/60 hover:shadow-[0_0_40px_rgba(56,189,248,0.25)] transition">
+    <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-card hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
       <div className="p-6 md:p-10">
         {/* Top part - Content */}
         <div className="mb-8">
           <div className="mb-2">
-            <span className="text-xs uppercase tracking-[0.25em] text-sky-400">
+            <span className="text-xs uppercase tracking-[0.25em] text-accent font-semibold">
               AI Interview Simulator
             </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-semibold text-gray-50 mb-3">
+          <h3 className="text-2xl md:text-3xl font-bold text-charcoal mb-3">
             PitchPal – AI Interview Simulator
           </h3>
-          <p className="text-lg text-gray-300 mb-6 font-medium">
+          <p className="text-lg text-gray-700 mb-6 font-medium">
             Voice + coding interview simulator for realistic practice.
           </p>
           
-          <ul className="list-disc list-inside space-y-3 mb-6 text-base md:text-lg text-gray-300">
+          <ul className="list-disc list-inside space-y-3 mb-6 text-base md:text-lg text-gray-600">
             <li>
               Built React frontend for resume upload, interview setup, and adaptive question flow.
             </li>
@@ -75,7 +75,7 @@ export default function PitchPalCard() {
             {["React", "TypeScript", "Spring Boot", "WebSockets", "JWT", "AI"].map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full border border-neutral-700 px-2.5 py-0.5 text-xs text-gray-300 hover:border-sky-500 hover:text-sky-300 transition"
+                className="inline-flex items-center rounded-full bg-lightGrey px-3 py-1 text-xs text-gray-700 font-medium"
               >
                 {tag}
               </span>
@@ -84,7 +84,7 @@ export default function PitchPalCard() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-neutral-800 mb-8"></div>
+        <div className="border-t border-gray-200 mb-8"></div>
 
         {/* Bottom part - Full-width media section */}
         <div className="w-full max-w-6xl mx-auto">

@@ -99,14 +99,14 @@ export default function ProjectMediaCarousel({
 
   return (
     <div className="w-full">
-      <h4 className="text-lg md:text-xl font-semibold text-gray-50 mb-4">{title}</h4>
+      <h4 className="text-xl md:text-2xl font-bold text-charcoal mb-6">{title}</h4>
 
       <div className="relative w-full" role="region" aria-label={ariaLabel}>
         {/* Scroll-snap carousel container */}
         <div
           ref={scrollContainerRef}
           onScroll={handleScroll}
-          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-2xl overflow-hidden border border-neutral-800 bg-black w-full"
+          className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide rounded-xl overflow-hidden border border-gray-200 bg-white shadow-card w-full"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -117,9 +117,9 @@ export default function ProjectMediaCarousel({
               key={index}
               className="min-w-full flex-shrink-0 snap-center snap-always"
             >
-              <div className="w-full rounded-2xl overflow-hidden border border-neutral-800 bg-black">
+              <div className="w-full rounded-xl overflow-hidden border border-gray-200 bg-white p-4 shadow-soft">
                 <div className="relative w-full" style={{ paddingTop: "56.25%" }}>
-                  <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+                  <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-gray-50 rounded-lg">
                     {item.type === "video" ? (
                       <video
                         ref={(el) => {
@@ -132,7 +132,7 @@ export default function ProjectMediaCarousel({
                         playsInline
                         controls
                         preload="metadata"
-                        className="w-full h-full object-contain bg-black"
+                        className="w-full h-full object-contain rounded-lg"
                         style={{
                           objectFit: "contain",
                           maxWidth: "100%",
@@ -145,7 +145,7 @@ export default function ProjectMediaCarousel({
                           src={item.src}
                           alt={item.label || `Screenshot ${index + 1}`}
                           fill
-                          className="object-contain bg-black"
+                          className="object-contain rounded-lg"
                           sizes="(max-width: 768px) 100vw, 100vw"
                           style={{
                             objectFit: "contain",
@@ -164,7 +164,7 @@ export default function ProjectMediaCarousel({
         <button
           onClick={handlePrev}
           aria-label="Previous slide"
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-neutral-900 border border-neutral-700 text-gray-200 hover:bg-neutral-800 p-2.5 rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-500 hidden md:flex items-center justify-center"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 text-charcoal hover:bg-lightGrey shadow-card p-3 rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent hidden md:flex items-center justify-center"
         >
           <svg
             className="w-5 h-5"
@@ -183,7 +183,7 @@ export default function ProjectMediaCarousel({
         <button
           onClick={handleNext}
           aria-label="Next slide"
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-neutral-900 border border-neutral-700 text-gray-200 hover:bg-neutral-800 p-2.5 rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-sky-500 hidden md:flex items-center justify-center"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-300 text-charcoal hover:bg-lightGrey shadow-card p-3 rounded-full transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-accent hidden md:flex items-center justify-center"
         >
           <svg
             className="w-5 h-5"
@@ -201,7 +201,7 @@ export default function ProjectMediaCarousel({
         </button>
 
         {/* Dots Indicator */}
-        <div className="flex justify-center gap-1.5 mt-6">
+        <div className="flex justify-center gap-2 mt-6">
           {mediaItems.map((_, index) => (
             <button
               key={index}
@@ -209,8 +209,8 @@ export default function ProjectMediaCarousel({
               aria-label={`Go to slide ${index + 1}`}
               className={`rounded-full transition-all duration-200 ${
                 index === currentIndex
-                  ? "w-6 h-1.5 bg-sky-500"
-                  : "w-1.5 h-1.5 bg-neutral-700 hover:bg-neutral-600"
+                  ? "w-8 h-2 bg-accent"
+                  : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
               }`}
             />
           ))}

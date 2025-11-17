@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  @apply bg-neutral-950 text-gray-100 antialiased;
+  @apply bg-white text-[#111111] antialiased;
 }
 
 /* Hide scrollbar for carousel */
@@ -18,5 +18,19 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+/* Subtle gradient blob backgrounds */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.gradient-blob {
+  animation: float 6s ease-in-out infinite;
 }
 

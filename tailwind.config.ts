@@ -10,9 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         accent: {
-          DEFAULT: "#1e40af",
-          dark: "#1e3a8a",
+          DEFAULT: "#3B82F6", // Clean startup blue
+          mint: "#4ADE80", // Mint green option
         },
+        charcoal: "#111111",
+        lightGrey: "#F2F2F2",
+      },
+      boxShadow: {
+        'soft': '0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06)',
+        'card': '0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04)',
       },
     },
   },

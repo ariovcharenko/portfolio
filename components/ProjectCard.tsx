@@ -23,11 +23,11 @@ export default function ProjectCard({
   pdfLink,
 }: ProjectCardProps) {
   return (
-    <div className={`bg-neutral-900/80 border border-neutral-800 rounded-2xl px-5 py-6 sm:px-7 sm:py-7 hover:border-sky-500/60 hover:shadow-[0_0_40px_rgba(56,189,248,0.25)] transition ${className}`}>
-      <h3 className="text-xl font-semibold text-gray-50 mb-2">{title}</h3>
-      <p className="text-sm sm:text-base text-gray-300 mb-6 leading-relaxed">{description}</p>
+    <div className={`bg-white border border-gray-200 rounded-xl px-6 py-8 sm:px-8 sm:py-10 shadow-card hover:shadow-lg hover:scale-[1.02] transition-all duration-300 ${className}`}>
+      <h3 className="text-2xl font-bold text-charcoal mb-3">{title}</h3>
+      <p className="text-base text-gray-700 mb-6 leading-relaxed">{description}</p>
       
-      <ul className="list-disc list-inside space-y-2 mb-6 text-sm sm:text-base text-gray-300">
+      <ul className="list-disc list-inside space-y-2 mb-6 text-base text-gray-600">
         {bullets.map((bullet, index) => (
           <li key={index}>
             {bullet}
@@ -39,7 +39,7 @@ export default function ProjectCard({
         {techTags.map((tag) => (
           <span
             key={tag}
-            className="inline-flex items-center rounded-full border border-neutral-700 px-2.5 py-0.5 text-xs text-gray-300 hover:border-sky-500 hover:text-sky-300 transition"
+            className="inline-flex items-center rounded-full bg-lightGrey px-3 py-1 text-xs text-gray-700 font-medium"
           >
             {tag}
           </span>
@@ -52,7 +52,7 @@ export default function ProjectCard({
             href={pdfLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-4 py-2 text-sm border border-neutral-700 rounded-full text-gray-300 hover:border-sky-500 hover:text-sky-300 transition"
+            className="inline-flex items-center px-5 py-2.5 text-sm bg-accent text-white rounded-full hover:bg-blue-600 transition-colors font-medium"
           >
             View Research Paper
           </a>
@@ -60,13 +60,13 @@ export default function ProjectCard({
       )}
 
       {images.length > 0 && (
-        <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4" style={{ gridAutoRows: "1fr" }}>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4" style={{ gridAutoRows: "1fr" }}>
           {images.map((image, idx) => {
             const isHall = image.src.includes("hall.jpg");
             return (
               <div 
                 key={idx} 
-                className="relative w-full rounded-lg border border-neutral-800 bg-black p-2 overflow-hidden"
+                className="relative w-full rounded-xl border border-gray-200 bg-white p-3 overflow-hidden shadow-soft"
               >
                 {isHall ? (
                   <div className="relative w-full h-full">
@@ -97,9 +97,9 @@ export default function ProjectCard({
           {imagePlaceholders.map((placeholder, idx) => (
             <div
               key={idx}
-              className="border-2 border-dashed border-neutral-700 rounded-lg p-8 md:p-12 bg-neutral-900 text-center"
+              className="border-2 border-dashed border-gray-300 rounded-xl p-8 md:p-12 bg-lightGrey text-center"
             >
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-500">
                 {placeholder.label} – TODO: replace with real image
               </p>
             </div>
