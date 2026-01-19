@@ -118,7 +118,7 @@ export default function Home() {
               { type: "image", src: "/images/growvio6.png", label: "Analytics Dashboard" },
             ]}
             links={[
-              { label: "Visit Website", href: "https://growvio.app" },
+              { label: "Visit Website", href: "https://beta.growvio.app/dashboard" },
               { label: "Instagram", href: "https://www.instagram.com/growvio.app/" },
             ]}
           />
