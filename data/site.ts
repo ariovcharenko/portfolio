@@ -34,27 +34,27 @@ export const heroPhrases = [
 export const strengths = [
   {
     title: "Ships to production",
-    body: "**6 features** shipped at Xsolla in a **React Native + TypeScript** monorepo, on **mobile and web**.",
+    body: "**6 features** at Xsolla in **React Native + TypeScript**, on mobile and web.",
   },
   {
     title: "Tests what I ship",
-    body: "**Jest and Testing Library** tests land in the same commits as the features, including a **contract test**.",
+    body: "**Jest + Testing Library** tests in the same commits as the features.",
   },
   {
     title: "Designs for reuse",
-    body: "Built a **config-driven registration wizard** and a **pluggable map-provider layer** instead of copy-pasting screens.",
+    body: "A **config-driven wizard** and a **pluggable map layer**, not copy-pasted screens.",
   },
   {
     title: "Full-stack range",
-    body: "**React / React Native** up front, **Spring Boot, WebSockets, JWT** in the back, **SQL** underneath (from my own products).",
+    body: "**React** and **Spring Boot**, with WebSockets, JWT and SQL.",
   },
   {
     title: "Measures AI quality",
-    body: "Built an **evaluation pipeline** for an LLM search feature that hit **97% match accuracy**, then wrote up how.",
+    body: "An **eval pipeline** for LLM search: **97% match accuracy**.",
   },
   {
     title: "Owns things end to end",
-    body: "Founded **PitchPal**, co-founded **Growvio**: product, UI, backend, branding, and onboarding.",
+    body: "Founded **PitchPal**, co-founded **Growvio**.",
   },
 ];
 
@@ -95,14 +95,12 @@ export const experience: ExperienceEntry[] = [
     href: "https://xsolla.com",
     role: "Software Engineer Intern",
     period: "Summer 2026",
-    summary: "Built **event and networking features** in Xsolla's **React Native** mobile app.",
+    summary: "**Event and networking features** in Xsolla's **React Native** app.",
     bullets: [
-      "Shipped **6 features** end to end in a **React Native + TypeScript** monorepo",
-      "Kept **mobile and web in sync** using React Native Web",
-      "Built a **config-driven registration wizard** with custom hooks and a **contract test**",
-      "Moved screens onto the **shared design system** and added a **pluggable map-provider layer**",
-      "Rebuilt **dashboard and invite flows**, added **editable RSVPs**, fixed **time zone parity** across platforms",
-      "Wrote **Jest + Testing Library tests** in the same commits as the features",
+      "Shipped **6 features** in a **React Native + TypeScript** monorepo",
+      "Built a **config-driven registration wizard** with a **contract test**",
+      "Moved screens to the **design system**, added a **pluggable map layer**",
+      "Kept **mobile and web in sync**, including **time zone parity**",
     ],
     tags: ["React Native", "React Native Web", "TypeScript", "React Navigation", "Jest", "Testing Library", "Monorepo"],
     featured: true,
@@ -113,10 +111,10 @@ export const experience: ExperienceEntry[] = [
     href: "https://beta.growvio.app/dashboard",
     role: "Co-Founder · Full-Stack + Product",
     period: "Oct 2025",
-    summary: "AI tool that generates **personalized daily tasks** for founders.",
+    summary: "AI tool for **personalized daily tasks**.",
     bullets: [
-      "Built responsive **React dashboards** and the **daily task UI**",
-      "Co-led **product design, branding, and onboarding**",
+      "Built the **React dashboards** and task UI",
+      "Co-led **branding and onboarding**",
     ],
     tags: ["React", "AI"],
   },
@@ -125,10 +123,10 @@ export const experience: ExperienceEntry[] = [
     company: "PitchPal",
     role: "Founder · Full-Stack Engineer",
     period: "Jun 2025",
-    summary: "AI-powered **voice and coding interview simulator**.",
+    summary: "AI **interview simulator**.",
     bullets: [
-      "Built the **React frontend** and **Spring Boot backend** (REST, WebSockets, JWT auth)",
-      "Added **logging and scoring** that turns answers into feedback",
+      "**React** frontend, **Spring Boot** backend (REST, WebSockets, JWT)",
+      "**Scoring** that turns answers into feedback",
     ],
     tags: ["React", "Spring Boot", "WebSockets", "JWT"],
   },
@@ -137,10 +135,10 @@ export const experience: ExperienceEntry[] = [
     company: "HallwAE Research",
     role: "Researcher & Developer · Illinois Tech",
     period: "Jan 2025",
-    summary: "**Quest 3 AR tool** for spontaneous hallway-style conversations, remotely.",
+    summary: "**Quest 3 AR** tool for remote hallway conversations.",
     bullets: [
-      "Ran **user research** and built core features in a **Unix** environment",
-      "Turned feedback into **research questions** that shaped product decisions",
+      "Ran **user research** and built core features",
+      "Findings shaped **product decisions**",
     ],
     tags: ["AR", "HCI", "Unix"],
   },
@@ -168,11 +166,11 @@ export const featuredProjects: FeaturedProjectData[] = [
     role: "Founder · Full-Stack Engineer",
     period: "Jun 2025",
     description:
-      "A **voice and coding interview simulator** that **adapts its questions** to your answers, then **scores** them and gives **feedback**.",
+      "A **voice + coding interview simulator** that adapts to your answers.",
     bullets: [
-      "**React** frontend: resume upload, interview setup, adaptive question flow",
-      "**Spring Boot** backend: REST APIs, WebSockets, JWT auth",
-      "**Logging and scoring** pipeline that turns answers into feedback",
+      "**React** frontend with an adaptive question flow",
+      "**Spring Boot** backend: REST, WebSockets, JWT",
+      "**Scoring** that turns answers into feedback",
     ],
     stack: ["React", "Spring Boot", "WebSockets", "JWT", "REST"],
     media: [
@@ -193,11 +191,11 @@ export const featuredProjects: FeaturedProjectData[] = [
     role: "Co-Founder · Full-Stack + Product",
     period: "Oct 2025",
     description:
-      "AI that generates **personalized daily tasks** to help founders grow, with **dashboards** to track progress.",
+      "AI that generates **daily tasks** for founders, with **dashboards** to track progress.",
     bullets: [
-      "Led the **React frontend**: dashboards, task views, progress tracking",
-      "Built the UI for **daily AI-generated tasks**",
-      "Co-led **product design, branding, and onboarding**",
+      "Led the **React frontend**",
+      "Built the **daily AI task** UI",
+      "Co-led **branding and onboarding**",
     ],
     stack: ["React", "AI task generation", "Product design"],
     media: [
@@ -220,11 +218,11 @@ export const featuredProjects: FeaturedProjectData[] = [
     role: "Personal project",
     period: "Apr 2025",
     description:
-      "A **natural-language product search** tool with a custom **evaluation framework** that measures how well the AI understands intent.",
+      "**Natural-language product search** with a custom **evaluation framework**.",
     bullets: [
-      "**Semantic filtering** turns natural-language queries into relevant matches",
-      "**Evaluation pipeline** compares AI output to manually defined expectations",
-      "**97% match accuracy** across 100 user-like queries after refining prompts and normalization",
+      "**Semantic filtering** of natural-language queries",
+      "**Eval pipeline** against manually defined expectations",
+      "**97% match accuracy** on 100 user-like queries",
     ],
     stack: ["React", "Node.js / Express", "OpenAI API", "Evals"],
     media: [
@@ -262,7 +260,7 @@ export const moreProjects: MoreProject[] = [
     title: "HallwAE: AR Hallway Conversations",
     period: "Jan 2025",
     description:
-      "**User research** and core development for a **Quest 3 AR tool** that recreates spontaneous hallway conversations for remote teams.",
+      "**User research** and core development for a **Quest 3 AR** hallway-chat tool.",
     tags: ["AR", "User research", "Unix"],
     image: "/images/hall.jpg",
     imageAlt: "Arina testing the HallwAE AR app on a Quest 3 headset",
@@ -275,7 +273,7 @@ export const moreProjects: MoreProject[] = [
     title: "IT Ticket Management",
     period: "Dec 2024",
     description:
-      "**Java GUI** ticketing app on **MySQL** with **role-based access**: full **CRUD** for admins, scoped access for users.",
+      "**Java GUI** ticketing app on **MySQL** with **role-based access**.",
     tags: ["Java", "MySQL", "RBAC"],
     image: "/images/sql1.jpeg",
     imageAlt: "IT Ticket app admin screen",
@@ -286,7 +284,7 @@ export const moreProjects: MoreProject[] = [
     title: "Antei Formwork Website",
     period: "Sep 2024",
     description:
-      "Marketing site for a construction formwork company, **designed in Figma** and built with **custom HTML/CSS**. Fully **responsive**.",
+      "Formwork company site: **Figma** design, **custom HTML/CSS**, **responsive**.",
     tags: ["Figma", "HTML", "CSS"],
     image: "/images/antei1.jpeg",
     imageAlt: "Antei website homepage",
@@ -298,7 +296,7 @@ export const moreProjects: MoreProject[] = [
     title: "Chem-E-Car Club Website",
     period: "Oct 2024",
     description:
-      "Co-built the **official club website**: organized content, **responsive layouts**, and an easy-to-update design.",
+      "Co-built the **club website** with **responsive layouts**.",
     tags: ["Web design", "Responsive UI"],
     image: "/images/chem1.jpeg",
     imageAlt: "Chem-E-Car club website homepage",
@@ -360,26 +358,24 @@ export const education = [
 export const aboutPoints = [
   {
     label: "Ownership.",
-    text: "I like taking a feature from the interface all the way through to the tests.",
+    text: "I like owning a feature from the interface to the tests.",
   },
   {
     label: "At Xsolla,",
-    text: "I worked in a React Native monorepo and kept mobile and web behaving the same.",
+    text: "React Native monorepo, mobile and web in sync.",
   },
   {
     label: "On my own projects,",
-    text: "that has meant everything from a Spring Boot backend to the evals that tell me whether an LLM feature works.",
+    text: "Spring Boot backends and LLM evals.",
   },
   {
-    label: "What I care about:",
-    text: "clear UI, good developer experience, and code the next person can change without fear.",
+    label: "I care about",
+    text: "clear UI and code others can change safely.",
   },
 ];
 
 export const outsidePoints = [
-  { label: "Track & field.", text: "I run the 100m and 200m for Illinois Tech." },
+  { label: "Track & field.", text: "100m and 200m for Illinois Tech." },
   { label: "Before that,", text: "11 years of acrobatic rock-n-roll." },
-  { label: "Gym", text: "for the last 4 years." },
-  { label: "Art school,", text: "and I still draw when I have time." },
-  { label: "Curious about", text: "philosophy, psychology, and how people make decisions." },
+  { label: "Also:", text: "gym, drawing, philosophy, psychology." },
 ];

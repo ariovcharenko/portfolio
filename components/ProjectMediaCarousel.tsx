@@ -100,6 +100,7 @@ export default function ProjectMediaCarousel({
                   src={item.src}
                   alt={item.label || `Screenshot ${index + 1}`}
                   fill
+                  quality={90}
                   className="object-contain"
                   sizes="(max-width: 768px) 100vw, 720px"
                 />

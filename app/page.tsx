@@ -57,18 +57,7 @@ export default function Home() {
         <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-8">
           <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-10">
             <div className="lg:col-span-7">
-              <p
-                className="fade-up inline-flex items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700"
-                style={{ animationDelay: "50ms" }}
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:animate-none" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-                </span>
-                Available for full-time roles · Open to relocation · Graduating May 2027
-              </p>
-
-              <h1 className="mt-7 font-serif text-[3.25rem] leading-[0.98] tracking-tight text-ink sm:text-7xl lg:text-[5.5rem]">
+              <h1 className="font-serif text-[3.25rem] leading-[0.98] tracking-tight text-ink sm:text-7xl lg:text-[5.5rem]">
                 <RiseWords text="Arina" start={150} />
                 <br />
                 <RiseWords text="Ovcharenko" start={260} />
@@ -88,15 +77,11 @@ export default function Home() {
               </p>
 
               <p
-                className="fade-up mt-6 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8"
+                className="fade-up mt-6 max-w-md text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8"
                 style={{ animationDelay: "850ms" }}
               >
-                Recently a <strong className="font-semibold text-ink">software engineering intern at Xsolla</strong>,
-                where I <strong className="font-semibold text-ink">shipped six features</strong> in a{" "}
-                <strong className="font-semibold text-ink">React Native</strong> app used on mobile and web.
-                Studying <strong className="font-semibold text-ink">IT &amp; Management</strong> (AI minor) at
-                Illinois Tech, and looking for my{" "}
-                <strong className="font-semibold text-ink">first full-time engineering role</strong>.
+                <strong className="block font-semibold text-ink">Software engineering intern at Xsolla</strong>
+                <span className="block">Illinois Tech, class of 2027</span>
               </p>
 
               <div
@@ -157,6 +142,7 @@ export default function Home() {
                     className="object-cover"
                     style={{ objectPosition: "center 20%" }}
                     priority
+                    unoptimized
                     sizes="(max-width: 1024px) 320px, 40vw"
                   />
                 </div>
@@ -196,7 +182,6 @@ export default function Home() {
         index="01"
         label="Strengths"
         title="What I bring to a team"
-        description="The habits that show up in my work: shipping, testing, and knowing whether something actually works."
       >
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
           {strengths.map((item, i) => (
@@ -221,7 +206,6 @@ export default function Home() {
         index="02"
         label="Experience"
         title="Where I've been building"
-        description="Industry experience, products I've started, and research I've contributed to."
         className="border-t border-neutral-200 bg-white"
       >
         <ExperienceList entries={experience} />
@@ -233,7 +217,6 @@ export default function Home() {
         index="03"
         label="Projects"
         title="Selected work"
-        description="Products I've designed and built end to end. Click through the screenshots and demo videos."
       >
         <div className="space-y-8 sm:space-y-10">
           {featuredProjects.map((project, index) => (
@@ -243,7 +226,6 @@ export default function Home() {
 
         <ScrollFadeIn className="mb-8 mt-20">
           <h3 className="font-serif text-3xl tracking-tight text-ink">Earlier work</h3>
-          <p className="mt-2 text-neutral-600">Research, desktop, and web projects from my first years of college.</p>
         </ScrollFadeIn>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
           {moreProjects.map((project, i) => (
@@ -258,7 +240,6 @@ export default function Home() {
         index="04"
         label="Skills"
         title="What I work with"
-        description="Tools I've used in internship and project work, grouped by where they show up in the stack."
         className="border-t border-neutral-200 bg-white"
       >
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
