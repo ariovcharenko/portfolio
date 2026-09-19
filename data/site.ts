@@ -16,13 +16,6 @@ export const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 
-export const stats = [
-  { value: 6, decimals: 0, suffix: "", label: "features shipped at Xsolla", note: "React Native + TypeScript" },
-  { value: 97, decimals: 0, suffix: "%", label: "match accuracy on my LLM eval", note: "across 100 user-like queries" },
-  { value: 2, decimals: 0, suffix: "", label: "AI products founded", note: "PitchPal and Growvio" },
-  { value: 3.8, decimals: 1, suffix: "", label: "GPA at Illinois Tech", note: "Minor in AI, graduating May 2027" },
-];
-
 export const heroPhrases = [
   "ship cross-platform features in React Native.",
   "write the tests that land with the feature.",

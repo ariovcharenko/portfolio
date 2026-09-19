@@ -4,7 +4,6 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Section from "@/components/Section";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import Typewriter from "@/components/Typewriter";
-import CountUp from "@/components/CountUp";
 import Marquee from "@/components/Marquee";
 import SpotlightCard from "@/components/SpotlightCard";
 import ExperienceList from "@/components/ExperienceList";
@@ -16,7 +15,6 @@ import CopyEmail from "@/components/CopyEmail";
 import { ArrowUpRight } from "@/components/Icons";
 import {
   profile,
-  stats,
   heroPhrases,
   strengths,
   stackTicker,
@@ -149,26 +147,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
-          {/* Stats */}
-          <ScrollFadeIn className="mt-20 sm:mt-24">
-            <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft lg:grid-cols-4">
-              {stats.map((stat, i) => (
-                <div
-                  key={stat.label}
-                  className={`p-5 sm:p-7 ${i % 2 === 1 ? "border-l border-neutral-200" : ""} ${
-                    i > 1 ? "border-t border-neutral-200 lg:border-t-0" : ""
-                  } ${i > 0 ? "lg:border-l lg:border-neutral-200" : ""}`}
-                >
-                  <dt className="font-serif text-5xl tracking-tight text-ink sm:text-6xl">
-                    <CountUp to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
-                  </dt>
-                  <dd className="mt-2 text-sm font-medium leading-snug text-ink">{stat.label}</dd>
-                  <dd className="mt-0.5 text-xs leading-snug text-neutral-500">{stat.note}</dd>
-                </div>
-              ))}
-            </dl>
-          </ScrollFadeIn>
         </div>
       </section>
 
