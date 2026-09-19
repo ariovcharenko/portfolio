@@ -329,19 +329,10 @@ export default function Home() {
       {/* Contact */}
       <section id="contact" className="px-5 pb-12 pt-8 sm:px-8 sm:pb-16">
         <ScrollFadeIn>
-          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-neutral-200 bg-white px-6 py-16 text-center shadow-card sm:px-12 sm:py-24">
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-neutral-200 bg-white px-6 py-12 text-center shadow-card sm:px-12 sm:py-16">
             <div className="bg-dots absolute inset-0 opacity-70" aria-hidden="true" />
             <div className="relative">
-              <p className="font-mono text-xs uppercase tracking-widest text-accent">06 / Contact</p>
-              <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl tracking-tight text-ink sm:text-6xl">
-                Let&apos;s talk about your next engineering hire.
-              </h2>
-              <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg">
-                I&apos;m looking for a full-time software engineering role and I&apos;m open to relocating.
-                Email is the fastest way to reach me.
-              </p>
-
-              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
                   href={`mailto:${profile.email}`}
                   className="inline-flex items-center justify-center rounded-lg bg-ink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent"
