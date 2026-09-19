@@ -8,12 +8,21 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["var(--font-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "ui-serif", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
+      },
       colors: {
+        paper: "#FBFAF8",
+        ink: "#16161A",
         accent: {
-          DEFAULT: "#6366F1", // Minimal violet accent (for small details only)
-          teal: "#14B8A6", // Teal option
+          DEFAULT: "#1D4ED8", // Deep blue: text-safe on paper
+          bright: "#2F6BFF", // Decorative use (bars, rules, dots)
+          soft: "#E8EFFF",
+          teal: "#14B8A6",
         },
-        charcoal: "#0B0B0B", // Near-black primary text
+        charcoal: "#0B0B0B",
         neutral: {
           50: "#FAFAFA",
           100: "#F5F5F5",
@@ -28,12 +37,11 @@ const config: Config = {
         },
       },
       boxShadow: {
-        'soft': '0 2px 8px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06)',
-        'card': '0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04)',
+        soft: "0 1px 2px rgba(22, 22, 26, 0.04), 0 4px 14px rgba(22, 22, 26, 0.04)",
+        card: "0 2px 4px rgba(22, 22, 26, 0.04), 0 14px 34px rgba(22, 22, 26, 0.09)",
       },
     },
   },
   plugins: [],
 };
 export default config;
-

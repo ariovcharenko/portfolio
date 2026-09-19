@@ -1,66 +1,96 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const navItems = [
-  { label: "Home", href: "#home" },
-  { label: "Projects", href: "#projects" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
+import { navItems, profile } from "@/data/site";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => setIsScrolled(window.scrollY > 8);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Mark the nav link for the section currently in the middle of the viewport
+  useEffect(() => {
+    // Include the intro so no link is highlighted while it is in view
+    const sections = ["#home", ...navItems.map((item) => item.href)]
+      .map((href) => document.querySelector(href))
+      .filter((el): el is Element => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id === "home" ? "" : `#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
     <>
       <nav
-        className="fixed top-0 inset-x-0 z-50 border-b border-neutral-200 bg-white/80 backdrop-blur-sm shadow-sm"
+        className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-all duration-300 ${
+          isScrolled ? "border-b border-neutral-200 bg-paper/85" : "border-b border-transparent bg-paper/40"
+        }`}
       >
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">
+          <div className="flex h-16 items-center justify-between">
             <a
               href="#home"
               onClick={(e) => handleClick(e, "#home")}
-              className="text-sm font-semibold tracking-wide text-charcoal hover:text-neutral-600 transition-colors"
+              className="font-serif text-xl tracking-tight text-ink"
             >
-              Arina Ovcharenko
+              {profile.name}
             </a>
-            <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-8 text-sm text-neutral-600">
-                {navItems.slice(1).map((item) => (
+
+            <div className="flex items-center gap-1">
+              <div className="hidden items-center gap-1 text-sm lg:flex">
+                {navItems.map((item) => (
                   <a
                     key={item.href}
                     href={item.href}
                     onClick={(e) => handleClick(e, item.href)}
-                    className="hover:text-charcoal transition-colors font-medium"
+                    className={`relative rounded-md px-3 py-1.5 transition-colors ${
+                      active === item.href ? "text-ink" : "text-neutral-500 hover:text-ink"
+                    }`}
                   >
                     {item.label}
+                    <span
+                      className={`absolute inset-x-3 -bottom-0.5 h-[2px] origin-left rounded-full bg-accent-bright transition-transform duration-300 ${
+                        active === item.href ? "scale-x-100" : "scale-x-0"
+                      }`}
+                    />
                   </a>
                 ))}
               </div>
+              <a
+                href={`mailto:${profile.email}`}
+                className="ml-3 hidden rounded-lg bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent sm:inline-flex"
+              >
+                Email me
+              </a>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="sm:hidden inline-flex items-center justify-center rounded-full border border-neutral-200 px-4 py-2 text-xs text-charcoal hover:bg-neutral-100 transition-colors"
+                className="ml-2 rounded-lg border border-neutral-300 bg-white px-3.5 py-2 text-sm text-ink lg:hidden"
                 aria-label="Toggle menu"
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? "Close" : "Menu"}
               </button>
@@ -68,21 +98,26 @@ export default function Navigation() {
           </div>
         </div>
       </nav>
+
       {isMobileMenuOpen && (
-        <div className="fixed right-4 top-16 z-40 w-48 rounded-xl border border-neutral-200 bg-white shadow-sm p-3 flex flex-col gap-2 text-sm sm:hidden">
-          {navItems.slice(1).map((item) => (
+        <div className="fixed inset-x-0 top-16 z-40 border-b border-neutral-200 bg-paper/95 px-5 py-2 shadow-card backdrop-blur-md lg:hidden">
+          {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={(e) => handleClick(e, item.href)}
-              className="text-neutral-700 hover:text-charcoal transition-colors px-3 py-2 rounded-lg hover:bg-neutral-100 font-medium"
+              className={`block border-b border-neutral-100 py-3 text-base last:border-0 ${
+                active === item.href ? "text-accent" : "text-neutral-700"
+              }`}
             >
               {item.label}
             </a>
           ))}
+          <a href={`mailto:${profile.email}`} className="block py-3 text-base font-medium text-ink">
+            Email me
+          </a>
         </div>
       )}
     </>
   );
 }
-

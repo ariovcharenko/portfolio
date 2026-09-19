@@ -1,479 +1,384 @@
-"use client";
-
 import Image from "next/image";
 import Navigation from "@/components/Navigation";
+import ScrollProgress from "@/components/ScrollProgress";
 import Section from "@/components/Section";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import PlatformProjectCard from "@/components/PlatformProjectCard";
-import { MediaItem } from "@/components/ProjectMediaCarousel";
+import Typewriter from "@/components/Typewriter";
+import CountUp from "@/components/CountUp";
+import Marquee from "@/components/Marquee";
+import SpotlightCard from "@/components/SpotlightCard";
+import ExperienceList from "@/components/ExperienceList";
+import FeaturedProject from "@/components/FeaturedProject";
+import MoreProjectCard from "@/components/MoreProjectCard";
+import Chip from "@/components/Chip";
+import Rich from "@/components/Rich";
+import CopyEmail from "@/components/CopyEmail";
+import { ArrowUpRight } from "@/components/Icons";
+import {
+  profile,
+  stats,
+  heroPhrases,
+  strengths,
+  stackTicker,
+  experience,
+  featuredProjects,
+  moreProjects,
+  skillGroups,
+  education,
+  aboutPoints,
+  outsidePoints,
+} from "@/data/site";
+
+// Each word slides up out of its own mask; `start` offsets the stagger.
+function RiseWords({ text, start = 0 }: { text: string; start?: number }) {
+  return (
+    <>
+      {text.split(" ").map((word, i) => (
+        <span key={`${word}-${i}`} className="inline-block overflow-hidden pb-[0.12em] align-bottom">
+          <span className="rise" style={{ animationDelay: `${start + i * 110}ms` }}>
+            {word}
+          </span>{" "}
+        </span>
+      ))}
+    </>
+  );
+}
 
 export default function Home() {
   return (
     <main className="min-h-screen">
+      <ScrollProgress />
       <Navigation />
 
-      {/* Hero Section */}
-      <section id="home" className="py-24 lg:py-32 border-b border-neutral-200">
-        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            {/* Left side - Editorial text */}
-            <div>
-              {/* Name headline - smaller, more subtle */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-semibold text-charcoal leading-tight">
-                Arina Ovcharenko
+      {/* Hero */}
+      <section id="home" className="relative overflow-hidden pb-14 pt-32 sm:pb-20 sm:pt-40">
+        <div className="bg-dots absolute inset-x-0 top-0 h-[38rem]" aria-hidden="true" />
+
+        <div className="relative mx-auto w-full max-w-6xl px-5 sm:px-8">
+          <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-7">
+              <p
+                className="fade-up inline-flex items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-3 py-1.5 text-xs font-medium text-neutral-700"
+                style={{ animationDelay: "50ms" }}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60 motion-reduce:animate-none" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+                </span>
+                Available for full-time roles · Open to relocation · Graduating May 2027
+              </p>
+
+              <h1 className="mt-7 font-serif text-[3.25rem] leading-[0.98] tracking-tight text-ink sm:text-7xl lg:text-[5.5rem]">
+                <RiseWords text="Arina" start={150} />
+                <br />
+                <RiseWords text="Ovcharenko" start={260} />
               </h1>
 
-              {/* Buttons - Black/neutral style */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <p
+                className="fade-up mt-6 text-xl font-medium text-ink sm:text-2xl"
+                style={{ animationDelay: "650ms" }}
+              >
+                Software engineer.
+              </p>
+              <p
+                className="fade-up mt-1 min-h-[3.75rem] max-w-xl text-xl leading-8 text-neutral-600 sm:min-h-[4rem] sm:text-2xl sm:leading-9"
+                style={{ animationDelay: "750ms" }}
+              >
+                I <Typewriter phrases={heroPhrases} className="text-neutral-800" />
+              </p>
+
+              <p
+                className="fade-up mt-6 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8"
+                style={{ animationDelay: "850ms" }}
+              >
+                Recently a <strong className="font-semibold text-ink">software engineering intern at Xsolla</strong>,
+                where I <strong className="font-semibold text-ink">shipped six features</strong> in a{" "}
+                <strong className="font-semibold text-ink">React Native</strong> app used on mobile and web.
+                Studying <strong className="font-semibold text-ink">IT &amp; Management</strong> (AI minor) at
+                Illinois Tech, and looking for my{" "}
+                <strong className="font-semibold text-ink">first full-time engineering role</strong>.
+              </p>
+
+              <div
+                className="fade-up mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
+                style={{ animationDelay: "950ms" }}
+              >
                 <a
                   href="#projects"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 transition"
+                  className="group inline-flex items-center justify-center gap-2 rounded-lg bg-ink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent"
                 >
-                  View Projects
+                  See my work
+                  <span className="transition-transform group-hover:translate-y-0.5" aria-hidden="true">
+                    ↓
+                  </span>
                 </a>
                 <a
-                  href="/resume/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-neutral-900 px-6 py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-100 transition"
+                  href={`mailto:${profile.email}`}
+                  className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-ink"
                 >
-                  View Resume
+                  Email me
                 </a>
-              </div>
-
-              {/* Meta line */}
-              <p className="text-xs text-neutral-500 mt-3 sm:mt-4">
-                Based in Chicago
-              </p>
-            </div>
-
-            {/* Right side - Large portrait card */}
-            <div className="relative">
-              <div className="relative rounded-3xl border border-neutral-200 bg-white shadow-sm overflow-hidden aspect-square">
-                <Image
-                  src="/images/me.jpeg"
-                  alt="Arina Ovcharenko"
-                  fill
-                  className="object-cover"
-                  style={{ objectPosition: 'center 20%' }}
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section - Platform Style */}
-      <Section id="projects">
-        <ScrollFadeIn>
-          <h2 className="text-3xl sm:text-4xl font-semibold text-charcoal mb-8 lg:mb-12">
-            Selected Projects
-          </h2>
-        </ScrollFadeIn>
-        <div className="space-y-8 md:space-y-12">
-          {/* PitchPal */}
-          <PlatformProjectCard
-            category="AI Product · Interview Simulator"
-            title="PitchPal"
-            description="Voice + coding interview simulator for realistic practice. Built React frontend, Spring Boot backend with WebSockets, and integrated AI logic to adapt questions based on user responses."
-            bullets={[
-              "Built React frontend for resume upload, interview setup, and adaptive question flow",
-              "Implemented Spring Boot backend with REST APIs, WebSockets, and secure JWT authentication",
-              "Integrated AI logic to adapt questions based on user responses",
-            ]}
-            mediaItems={[
-              { type: "video", src: "/videos/pitchpal-demo.mp4", label: "Log in & Setup" },
-              { type: "image", src: "/images/pitchpal2.png", label: "Dashboard Overview" },
-              { type: "image", src: "/images/pitchpal3.png", label: "Real-time Insights" },
-              { type: "image", src: "/images/pitchpal4.png", label: "Interview Setup" },
-              { type: "video", src: "/videos/pitchpal-interactive.mp4", label: "Interactive Experience" },
-              { type: "image", src: "/images/pitchpal6.png", label: "Analytics View" },
-              { type: "image", src: "/images/pitchpal7.png", label: "Performance Metrics" },
-            ]}
-            unmutedVideoIndices={[4]}
-          />
-
-          {/* Growvio */}
-          <PlatformProjectCard
-            category="AI Product · Business Growth"
-            title="Growvio"
-            description="AI that generates daily tasks to help founders grow their business. Co-founded product, led React frontend, and created branding and social media content."
-            bullets={[
-              "Co-founded product and led React frontend for dashboards and task views",
-              "Built UI for daily AI-generated tasks and progress tracking",
-              "Created branding and social media content to support growth",
-            ]}
-            mediaItems={[
-              { type: "video", src: "/videos/growvio-demo.mp4", label: "Growvio Overview" },
-              { type: "image", src: "/images/growvio2.png", label: "Dashboard View" },
-              { type: "image", src: "/images/growvio3.png", label: "Task Management" },
-              { type: "image", src: "/images/growvio4.png", label: "AI-Generated Tasks" },
-              { type: "image", src: "/images/growvio5.png", label: "Progress Tracking" },
-              { type: "image", src: "/images/growvio6.png", label: "Analytics Dashboard" },
-            ]}
-            links={[
-              { label: "Visit Website", href: "https://beta.growvio.app/dashboard" },
-              { label: "Instagram", href: "https://www.instagram.com/growvio.app/" },
-            ]}
-          />
-
-          {/* Semantic Search Analysis */}
-          <PlatformProjectCard
-            category="AI Product · Evaluation"
-            title="Semantic Search Analysis App"
-            description="An AI-powered product search tool with a custom evaluation framework for semantic understanding. Achieved ~97% match accuracy across 100 user-like queries."
-            bullets={[
-              "Interprets natural language queries and returns relevant product matches using semantic filtering",
-              "Designed a custom evaluation framework comparing AI outputs to manually defined expectations",
-              "Achieved ~97% match accuracy across 100 user-like queries by iteratively refining prompts and normalization logic",
-            ]}
-            mediaItems={[
-              { type: "image", src: "/images/sem-search1.png", label: "Query and results view" },
-              { type: "image", src: "/images/sem-search2.png", label: "Search parameters and filters" },
-              { type: "image", src: "/images/sem-search3.png", label: "Evaluation dashboard" },
-            ]}
-            links={[
-              { label: "View App on GitHub", href: "https://github.com/ariovcharenko/ai-shopping-assistant" },
-              { label: "Read Article: The Power of Evals", href: "https://open.substack.com/pub/ariovcharenko/p/the-power-of-evals-teaching-ai-to?r=5fmti7&utm_campaign=post&utm_medium=web" },
-            ]}
-          />
-
-          {/* HallwAE Research */}
-          <ScrollFadeIn>
-            <div className="group bg-white border border-neutral-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              {/* Images grid - side by side */}
-              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-6 lg:px-8">
-                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white aspect-[4/3]">
-                  <Image
-                    src="/images/hall.jpg"
-                    alt="HallwAE – AR research"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white aspect-[4/3]">
-                  <Image
-                    src="/images/hall3.jpeg"
-                    alt="HallwAE – AR research"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-
-              {/* TEXT AREA */}
-              <div className="p-6 lg:p-8">
-                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2">
-                  Research · HCI
-                </p>
-                <h3 className="text-xl font-semibold text-charcoal mb-2">HallwAE – AR Hallway Conversations</h3>
-                <p className="text-sm text-neutral-600 mt-1 mb-4 leading-relaxed">
-                  User research for an augmented reality application that enables spontaneous hallway-style conversations remotely.
-                </p>
-                <ul className="list-disc list-inside space-y-1 mb-4 text-xs text-neutral-500">
-                  <li>Gathered user feedback and translated it into actionable research questions</li>
-                  <li>Contributed insights to guide product decisions and improve human-computer interaction in AR environments</li>
-                </ul>
-                <div className="flex flex-wrap gap-4">
+                <span className="hidden h-6 w-px bg-neutral-300 sm:block" aria-hidden="true" />
+                <div className="flex items-center gap-5 text-sm font-medium">
                   <a
-                    href="/attathment/pdfvr.pdf"
+                    href={profile.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-medium text-charcoal hover:text-neutral-600 transition-colors group/link"
+                    className="link inline-flex items-center gap-1"
                   >
-                    View Research Paper
-                    <svg
-                      className="w-3 h-3 ml-1 transition-transform group-hover/link:translate-x-1"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M9 5l7 7-7 7" />
-                    </svg>
+                    GitHub
+                    <ArrowUpRight />
+                  </a>
+                  <a
+                    href={profile.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link inline-flex items-center gap-1"
+                  >
+                    LinkedIn
+                    <ArrowUpRight />
                   </a>
                 </div>
               </div>
             </div>
-          </ScrollFadeIn>
 
-          {/* IT Ticket App */}
+            {/* Portrait */}
+            <div className="fade-up flex justify-center lg:col-span-5 lg:justify-end" style={{ animationDelay: "400ms" }}>
+              <div className="portrait-wrap relative w-full max-w-[19rem] sm:max-w-sm">
+                <div
+                  className="portrait-back absolute inset-0 rounded-2xl bg-accent-soft ring-1 ring-accent-bright/20"
+                  aria-hidden="true"
+                />
+                <div className="portrait-tilt relative aspect-[4/5] overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-card">
+                  <Image
+                    src="/images/me.jpeg"
+                    alt="Arina Ovcharenko"
+                    fill
+                    className="object-cover"
+                    style={{ objectPosition: "center 20%" }}
+                    priority
+                    sizes="(max-width: 1024px) 320px, 40vw"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats */}
+          <ScrollFadeIn className="mt-20 sm:mt-24">
+            <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-soft lg:grid-cols-4">
+              {stats.map((stat, i) => (
+                <div
+                  key={stat.label}
+                  className={`p-5 sm:p-7 ${i % 2 === 1 ? "border-l border-neutral-200" : ""} ${
+                    i > 1 ? "border-t border-neutral-200 lg:border-t-0" : ""
+                  } ${i > 0 ? "lg:border-l lg:border-neutral-200" : ""}`}
+                >
+                  <dt className="font-serif text-5xl tracking-tight text-ink sm:text-6xl">
+                    <CountUp to={stat.value} decimals={stat.decimals} suffix={stat.suffix} />
+                  </dt>
+                  <dd className="mt-2 text-sm font-medium leading-snug text-ink">{stat.label}</dd>
+                  <dd className="mt-0.5 text-xs leading-snug text-neutral-500">{stat.note}</dd>
+                </div>
+              ))}
+            </dl>
+          </ScrollFadeIn>
+        </div>
+      </section>
+
+      <div className="border-y border-neutral-200 bg-white">
+        <Marquee items={stackTicker} />
+      </div>
+
+      {/* Strengths */}
+      <Section
+        id="strengths"
+        index="01"
+        label="Strengths"
+        title="What I bring to a team"
+        description="The habits that show up in my work: shipping, testing, and knowing whether something actually works."
+      >
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {strengths.map((item, i) => (
+            <ScrollFadeIn key={item.title} delay={(i % 3) * 90} className="h-full">
+              <SpotlightCard className="h-full rounded-2xl border border-neutral-200 bg-white transition-colors duration-300 hover:border-neutral-400">
+                <div className="p-6 sm:p-7">
+                  <p className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</p>
+                  <h3 className="mt-3 font-serif text-2xl tracking-tight text-ink">{item.title}</h3>
+                  <p className="mt-3 text-[15px] leading-7 text-neutral-600">
+                    <Rich text={item.body} />
+                  </p>
+                </div>
+              </SpotlightCard>
+            </ScrollFadeIn>
+          ))}
+        </div>
+      </Section>
+
+      {/* Experience */}
+      <Section
+        id="experience"
+        index="02"
+        label="Experience"
+        title="Where I've been building"
+        description="Industry experience, products I've started, and research I've contributed to."
+        className="border-t border-neutral-200 bg-white"
+      >
+        <ExperienceList entries={experience} />
+      </Section>
+
+      {/* Projects */}
+      <Section
+        id="projects"
+        index="03"
+        label="Projects"
+        title="Selected work"
+        description="Products I've designed and built end to end. Click through the screenshots and demo videos."
+      >
+        <div className="space-y-8 sm:space-y-10">
+          {featuredProjects.map((project, index) => (
+            <FeaturedProject key={project.id} project={project} index={index} />
+          ))}
+        </div>
+
+        <ScrollFadeIn className="mb-8 mt-20">
+          <h3 className="font-serif text-3xl tracking-tight text-ink">Earlier work</h3>
+          <p className="mt-2 text-neutral-600">Research, desktop, and web projects from my first years of college.</p>
+        </ScrollFadeIn>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
+          {moreProjects.map((project, i) => (
+            <MoreProjectCard key={project.id} project={project} delay={(i % 2) * 100} />
+          ))}
+        </div>
+      </Section>
+
+      {/* Skills */}
+      <Section
+        id="skills"
+        index="04"
+        label="Skills"
+        title="What I work with"
+        description="Tools I've used in internship and project work, grouped by where they show up in the stack."
+        className="border-t border-neutral-200 bg-white"
+      >
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {skillGroups.map((group, i) => (
+            <ScrollFadeIn key={group.title} delay={(i % 3) * 80} className="h-full">
+              <div className="h-full rounded-2xl border border-neutral-200 bg-paper p-6">
+                <h3 className="font-mono text-xs uppercase tracking-widest text-accent">{group.title}</h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <Chip key={item}>{item}</Chip>
+                  ))}
+                </div>
+              </div>
+            </ScrollFadeIn>
+          ))}
+        </div>
+
+        <ScrollFadeIn className="mt-16">
+          <h3 className="mb-6 font-serif text-3xl tracking-tight text-ink">Education</h3>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {education.map((item) => (
+              <div key={item.school} className="rounded-2xl border border-neutral-200 bg-paper p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <h4 className="font-serif text-2xl tracking-tight text-ink">{item.school}</h4>
+                    <p className="text-sm text-neutral-500">{item.place}</p>
+                  </div>
+                  <p className="whitespace-nowrap pt-1.5 font-mono text-xs text-neutral-500">{item.period}</p>
+                </div>
+                <p className="mt-4 text-[15px] font-medium text-neutral-800">{item.degree}</p>
+                <p className="mt-1 text-sm text-neutral-600">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </ScrollFadeIn>
+      </Section>
+
+      {/* About */}
+      <Section id="about" index="05" label="About" title="A bit about me">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           <ScrollFadeIn>
-            <div className="group bg-white border border-neutral-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300">
-              {/* Images grid - side by side */}
-              <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 px-6 lg:px-8">
-                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white">
-                  <Image
-                    src="/images/sql1.jpeg"
-                    alt="IT Ticket App – Login screen"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-cover rounded-3xl"
-                  />
-                </div>
-                <div className="relative rounded-3xl border border-neutral-200 overflow-hidden bg-white">
-                  <Image
-                    src="/images/sql2.jpeg"
-                    alt="IT Ticket App – Admin ticket list"
-                    width={800}
-                    height={600}
-                    className="w-full h-auto object-cover rounded-3xl"
-                  />
-                </div>
-              </div>
-
-              {/* TEXT AREA */}
-              <div className="p-6 lg:p-8">
-                <p className="text-xs uppercase tracking-[0.2em] text-neutral-500 mb-2">
-                  Web App · Desktop
-                </p>
-                <h3 className="text-xl font-semibold text-charcoal mb-2">IT Ticket Management App</h3>
-                <p className="text-sm text-neutral-600 mt-1 mb-4 leading-relaxed">
-                  A Java-based ticketing system with MySQL backend and role-based access.
-                </p>
-                <ul className="list-disc list-inside space-y-1 mb-4 text-xs text-neutral-500">
-                  <li>Created database tables in MySQL Workbench for trouble tickets and user credentials</li>
-                  <li>Implemented a Java GUI with login and role-based access (admin vs regular users)</li>
-                  <li>Enabled CRUD operations for admins and scoped access for regular users</li>
-                </ul>
-              </div>
+            <ul className="space-y-5">
+              {aboutPoints.map((point) => (
+                <li key={point.label} className="flex gap-4">
+                  <span className="mt-2.5 h-1.5 w-1.5 flex-none rounded-[2px] bg-accent-bright" />
+                  <p className="text-base leading-7 text-neutral-600 sm:text-lg sm:leading-8">
+                    <strong className="font-semibold text-ink">{point.label}</strong> {point.text}
+                  </p>
+                </li>
+              ))}
+            </ul>
+          </ScrollFadeIn>
+          <ScrollFadeIn delay={100}>
+            <div className="rounded-2xl border border-neutral-200 bg-white p-6 sm:p-8">
+              <h3 className="font-serif text-2xl tracking-tight text-ink">Outside of engineering</h3>
+              <ul className="mt-4 space-y-3 text-[15px] leading-7 text-neutral-600">
+                {outsidePoints.map((point) => (
+                  <li key={point.label}>
+                    <strong className="font-semibold text-ink">{point.label}</strong> {point.text}
+                  </li>
+                ))}
+              </ul>
             </div>
           </ScrollFadeIn>
-
-          {/* Antei Website */}
-          <PlatformProjectCard
-            category="Web Design · Marketing"
-            title="Antei Construction Formwork Website"
-            description="A marketing site for a construction formwork rental company, designed and built end-to-end."
-            bullets={[
-              "Designed layout in Figma focused on clarity and navigation",
-              "Implemented custom HTML/CSS and deployed via Hostinger",
-              "Ensured responsive behavior for desktop and mobile",
-            ]}
-            mediaItems={[
-              { type: "image", src: "/images/antei1.jpeg", label: "Homepage" },
-              { type: "image", src: "/images/antei2.jpeg", label: "Product page" },
-            ]}
-          />
-
-          {/* Chem-E-Car Website */}
-          <PlatformProjectCard
-            category="Web Design · Club Website"
-            title="Chem-E-Car Club Website"
-            description="The official website for the Chem-E-Car club, built to improve accessibility and communication."
-            bullets={[
-              "Co-designed and implemented a clean, informative layout for club information and updates",
-              "Optimized for both desktop and mobile devices",
-              "Supported ongoing updates as an active member of the organization",
-            ]}
-            mediaItems={[
-              { type: "image", src: "/images/chem1.jpeg", label: "Homepage" },
-              { type: "image", src: "/images/chem2.jpeg", label: "Club information" },
-              { type: "image", src: "/images/chem3.jpeg", label: "Club updates" },
-            ]}
-          />
         </div>
       </Section>
 
-      {/* Skills Section */}
-      <Section id="skills" title="Skills">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* AI & Data */}
-          <div className="rounded-xl border border-gray-200 bg-lightGrey p-6 shadow-soft">
-            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-accent mb-4">
-              AI AND DATA
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                NLP
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Semantic search
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Evaluation frameworks
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Prompt engineering
-              </span>
+      {/* Contact */}
+      <section id="contact" className="px-5 pb-12 pt-8 sm:px-8 sm:pb-16">
+        <ScrollFadeIn>
+          <div className="relative mx-auto max-w-6xl overflow-hidden rounded-3xl border border-neutral-200 bg-white px-6 py-16 text-center shadow-card sm:px-12 sm:py-24">
+            <div className="bg-dots absolute inset-0 opacity-70" aria-hidden="true" />
+            <div className="relative">
+              <p className="font-mono text-xs uppercase tracking-widest text-accent">06 / Contact</p>
+              <h2 className="mx-auto mt-4 max-w-3xl font-serif text-4xl tracking-tight text-ink sm:text-6xl">
+                Let&apos;s talk about your next engineering hire.
+              </h2>
+              <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg">
+                I&apos;m looking for a full-time software engineering role and I&apos;m open to relocating.
+                Email is the fastest way to reach me.
+              </p>
+
+              <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="inline-flex items-center justify-center rounded-lg bg-ink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent"
+                >
+                  {profile.email}
+                </a>
+                <CopyEmail email={profile.email} />
+              </div>
+
+              <div className="mt-6 flex items-center justify-center gap-6 text-sm font-medium">
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link inline-flex items-center gap-1"
+                >
+                  LinkedIn
+                  <ArrowUpRight />
+                </a>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link inline-flex items-center gap-1"
+                >
+                  GitHub
+                  <ArrowUpRight />
+                </a>
+              </div>
             </div>
           </div>
+        </ScrollFadeIn>
 
-          {/* Backend */}
-          <div className="rounded-xl border border-gray-200 bg-lightGrey p-6 shadow-soft">
-            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-accent mb-4">
-              BACKEND
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Python
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Java (Spring Boot)
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Node.js / Express
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                REST APIs
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                WebSockets
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                JWT
-              </span>
-            </div>
-          </div>
-
-          {/* Frontend */}
-          <div className="rounded-xl border border-gray-200 bg-lightGrey p-6 shadow-soft">
-            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-accent mb-4">
-              FRONTEND
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                React
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                TypeScript / JavaScript
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                HTML
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                CSS
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Responsive UI
-              </span>
-            </div>
-          </div>
-
-          {/* Tools */}
-          <div className="rounded-xl border border-gray-200 bg-lightGrey p-6 shadow-soft md:col-span-3">
-            <h3 className="text-sm font-bold uppercase tracking-[0.25em] text-accent mb-4">
-              TOOLS
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Git / GitHub
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Docker
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Kubernetes
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                AWS / GCP
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                PostgreSQL / MySQL
-              </span>
-              <span className="px-3 py-1.5 text-xs rounded-full bg-white text-gray-700 font-medium shadow-soft">
-                Figma
-              </span>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Education Section */}
-      <Section id="education" title="Education">
-        <div className="space-y-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-soft">
-            <h3 className="text-xl font-bold text-charcoal mb-2">
-              Illinois Institute of Technology, Chicago, IL
-            </h3>
-            <p className="text-base text-gray-700 mb-1">
-              Bachelor of Information Technology and Management, Minor in Artificial Intelligence
-            </p>
-            <p className="text-base text-gray-600">Expected graduation: May 2027</p>
-          </div>
-          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-soft">
-            <h3 className="text-xl font-bold text-charcoal mb-2">
-              University of Roehampton, London, United Kingdom
-            </h3>
-            <p className="text-base text-gray-700">Exchange Semester in Computer Science</p>
-          </div>
-        </div>
-      </Section>
-
-      {/* About Section */}
-      <Section id="about" title="About">
-        <div className="max-w-3xl">
-          <p className="text-base sm:text-lg text-neutral-600 leading-relaxed mb-6">
-            I'm an AI engineer and full-stack developer passionate about building AI-powered products
-            and evaluation systems. I care deeply about UI clarity and developer experience,
-            working on both startup projects and research initiatives. My focus is on creating
-            practical, well-designed solutions that solve real problems.
-          </p>
-        </div>
-      </Section>
-
-      {/* Outside of Engineering Section */}
-      <Section id="life-outside-tech" title="Outside of engineering">
-        <div className="max-w-3xl">
-          <div className="space-y-4">
-            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
-              Outside of engineering, I love staying active — I&apos;ve been going to the gym for 4 years, and I&apos;m also on the Illinois Tech Track &amp; Field team, running 100m and 200m sprints. Before that, I trained in acrobatic rock-n-roll for 11 years.
-            </p>
-            <p className="text-base sm:text-lg text-neutral-600 leading-relaxed">
-              I also studied at an art school and still draw when I have time. I&apos;m interested in philosophy and psychology, and I enjoy learning how people think and make decisions.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      {/* Contact Section */}
-      <Section id="contact">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="space-y-6">
-            {/* Email */}
-            <div>
-              <a
-                href="mailto:arinna.ovcharenko@gmail.com"
-                className="inline-flex items-center text-charcoal hover:text-neutral-600 text-lg md:text-xl transition-colors font-medium"
-              >
-                arinna.ovcharenko@gmail.com
-              </a>
-            </div>
-            
-            {/* Social links */}
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href="https://www.linkedin.com/in/arina-ovcharenko/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full bg-neutral-900 px-6 py-2.5 text-sm font-medium text-white hover:bg-neutral-800 transition"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://github.com/ariovcharenko"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-neutral-900 px-6 py-2.5 text-sm font-medium text-neutral-900 hover:bg-neutral-100 transition"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-        </div>
-      </Section>
-
+        <p className="mt-10 text-center text-xs text-neutral-500">
+          © {new Date().getFullYear()} {profile.name} · Built with Next.js and Tailwind
+        </p>
+      </section>
     </main>
   );
 }
-

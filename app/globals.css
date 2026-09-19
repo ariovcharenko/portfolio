@@ -4,10 +4,15 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
 }
 
 body {
-  @apply bg-white text-[#111111] antialiased;
+  @apply bg-paper text-ink antialiased;
+}
+
+::selection {
+  background: #cfdcff;
 }
 
 /* Hide scrollbar for carousel */
@@ -20,17 +25,123 @@ body {
   display: none;
 }
 
-/* Subtle gradient blob backgrounds */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+/* Plain underlined text link */
+.link {
+  @apply underline decoration-neutral-300 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
 }
 
-.gradient-blob {
-  animation: float 6s ease-in-out infinite;
+/* Faint dot grid, fading out toward the bottom */
+.bg-dots {
+  background-image: radial-gradient(rgba(22, 22, 26, 0.13) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
 }
 
+/* Hero: words slide up out of a mask */
+@keyframes rise {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.rise {
+  display: inline-block;
+  animation: rise 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Portrait: slight tilt that straightens on hover */
+.portrait-tilt {
+  transform: rotate(2deg);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.portrait-wrap:hover .portrait-tilt {
+  transform: rotate(0deg);
+}
+.portrait-back {
+  transform: rotate(-4deg);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.portrait-wrap:hover .portrait-back {
+  transform: rotate(-7deg) translate(-4px, 4px);
+}
+
+/* Tech ticker */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1s steps(1) infinite;
+}
+
+/* Section heading accent rule that draws itself in */
+.rule-draw {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) 0.15s;
+}
+.is-visible .rule-draw {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .rise,
+  .fade-up,
+  .caret {
+    animation: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+  .portrait-tilt,
+  .portrait-back,
+  .rule-draw {
+    transition: none;
+  }
+  .rule-draw {
+    transform: scaleX(1);
+  }
+}
