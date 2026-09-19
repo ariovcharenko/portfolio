@@ -205,9 +205,9 @@ export default function Home() {
         <ScrollFadeIn className="mb-8 mt-20">
           <h3 className="font-serif text-3xl tracking-tight text-ink">Earlier work</h3>
         </ScrollFadeIn>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3">
           {moreProjects.map((project, i) => (
-            <MoreProjectCard key={project.id} project={project} delay={(i % 2) * 100} />
+            <MoreProjectCard key={project.id} project={project} delay={i * 90} />
           ))}
         </div>
       </Section>

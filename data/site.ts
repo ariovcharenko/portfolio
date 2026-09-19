@@ -261,17 +261,6 @@ export const moreProjects: MoreProject[] = [
     link: { label: "Read the paper", href: "/attathment/pdfvr.pdf" },
   },
   {
-    id: "it-tickets",
-    category: "Desktop App",
-    title: "IT Ticket Management",
-    period: "Dec 2024",
-    description:
-      "**Java GUI** ticketing app on **MySQL** with **role-based access**.",
-    tags: ["Java", "MySQL", "RBAC"],
-    image: "/images/sql1.jpeg",
-    imageAlt: "IT Ticket app admin screen",
-  },
-  {
     id: "antei",
     category: "Web · Marketing",
     title: "Antei Formwork Website",
