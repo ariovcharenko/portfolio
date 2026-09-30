@@ -2,7 +2,6 @@ import type { MediaItem } from "@/components/ProjectMediaCarousel";
 
 export const profile = {
   name: "Arina Ovcharenko",
-  email: "arinna.ovcharenko@gmail.com",
   linkedin: "https://www.linkedin.com/in/arina-ovcharenko/",
   github: "https://github.com/ariovcharenko",
 };

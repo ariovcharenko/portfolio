@@ -81,10 +81,11 @@ export default function Navigation() {
                 ))}
               </div>
               <a
-                href={`mailto:${profile.email}`}
+                href="#contact"
+                onClick={(e) => handleClick(e, "#contact")}
                 className="ml-3 hidden rounded-lg bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent sm:inline-flex"
               >
-                Email me
+                Get in touch
               </a>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -113,9 +114,6 @@ export default function Navigation() {
               {item.label}
             </a>
           ))}
-          <a href={`mailto:${profile.email}`} className="block py-3 text-base font-medium text-ink">
-            Email me
-          </a>
         </div>
       )}
     </>

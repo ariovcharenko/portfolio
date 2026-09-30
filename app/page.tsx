@@ -11,7 +11,6 @@ import FeaturedProject from "@/components/FeaturedProject";
 import MoreProjectCard from "@/components/MoreProjectCard";
 import Chip from "@/components/Chip";
 import Rich from "@/components/Rich";
-import CopyEmail from "@/components/CopyEmail";
 import { ArrowUpRight } from "@/components/Icons";
 import {
   profile,
@@ -96,10 +95,10 @@ export default function Home() {
                   </span>
                 </a>
                 <a
-                  href={`mailto:${profile.email}`}
+                  href="#contact"
                   className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-ink"
                 >
-                  Email me
+                  Get in touch
                 </a>
                 <span className="hidden h-6 w-px bg-neutral-300 sm:block" aria-hidden="true" />
                 <div className="flex items-center gap-5 text-sm font-medium">
@@ -293,20 +292,10 @@ export default function Home() {
             <div className="relative">
               <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <a
-                  href={`mailto:${profile.email}`}
-                  className="inline-flex items-center justify-center rounded-lg bg-ink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent"
-                >
-                  {profile.email}
-                </a>
-                <CopyEmail email={profile.email} />
-              </div>
-
-              <div className="mt-6 flex items-center justify-center gap-6 text-sm font-medium">
-                <a
                   href={profile.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link inline-flex items-center gap-1"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-ink px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-accent"
                 >
                   LinkedIn
                   <ArrowUpRight />
@@ -315,7 +304,7 @@ export default function Home() {
                   href={profile.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="link inline-flex items-center gap-1"
+                  className="inline-flex items-center justify-center gap-1.5 rounded-lg border border-neutral-300 bg-white px-6 py-3 text-sm font-medium text-ink transition-colors hover:border-ink"
                 >
                   GitHub
                   <ArrowUpRight />
