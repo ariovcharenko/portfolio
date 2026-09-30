@@ -57,12 +57,16 @@ export default function ExperienceList({ entries }: { entries: ExperienceEntry[]
                   </h3>
                   <p className="mt-1 text-sm font-medium text-neutral-700 sm:text-base">{entry.role}</p>
                 </div>
-                <p className="whitespace-nowrap font-mono text-xs text-neutral-500 sm:pt-2">{entry.period}</p>
+                {entry.period && (
+                  <p className="whitespace-nowrap font-mono text-xs text-neutral-500 sm:pt-2">{entry.period}</p>
+                )}
               </div>
 
-              <p className="mt-4 max-w-3xl text-[15px] leading-7 text-neutral-600">
-                <Rich text={entry.summary} />
-              </p>
+              {entry.summary && (
+                <p className="mt-4 max-w-3xl text-[15px] leading-7 text-neutral-600">
+                  <Rich text={entry.summary} />
+                </p>
+              )}
 
               {entry.bullets.length > 0 && (
                 <ul className="mt-4 max-w-3xl space-y-2.5">

@@ -74,8 +74,8 @@ export interface ExperienceEntry {
   company: string;
   href?: string;
   role: string;
-  period: string;
-  summary: string;
+  period?: string;
+  summary?: string;
   bullets: string[];
   tags?: string[];
   featured?: boolean;
@@ -86,8 +86,8 @@ export const experience: ExperienceEntry[] = [
     id: "xsolla",
     company: "Xsolla",
     href: "https://xsolla.com",
-    role: "Software Engineer Intern",
-    period: "Summer 2026",
+    role: "Software Engineer · Internship",
+    period: "May 2026 – Aug 2026",
     summary: "**Event and networking features** in Xsolla's **React Native** app.",
     bullets: [
       "Shipped **6 features** in a **React Native + TypeScript** monorepo",
@@ -99,11 +99,19 @@ export const experience: ExperienceEntry[] = [
     featured: true,
   },
   {
+    // TODO: add a `summary`, `bullets`, and `tags` once details are confirmed
+    id: "lvl3",
+    company: "lvl3.ai",
+    role: "Software Engineer · Part-time",
+    period: "Jan 2026 – Jul 2026",
+    bullets: [],
+  },
+  {
     id: "growvio",
     company: "Growvio",
     href: "https://beta.growvio.app/dashboard",
-    role: "Co-Founder · Full-Stack + Product",
-    period: "Oct 2025",
+    role: "Founding Software Engineer · Full-time",
+    period: "Oct 2025 – Feb 2026",
     summary: "AI tool for **personalized daily tasks**.",
     bullets: [
       "Built the **React dashboards** and task UI",
@@ -114,8 +122,8 @@ export const experience: ExperienceEntry[] = [
   {
     id: "pitchpal",
     company: "PitchPal",
-    role: "Founder · Full-Stack Engineer",
-    period: "Jun 2025",
+    role: "Founding Software Engineer · Self-employed",
+    period: "Jun 2025 – Aug 2025",
     summary: "AI **interview simulator**.",
     bullets: [
       "**React** frontend, **Spring Boot** backend (REST, WebSockets, JWT)",
@@ -156,8 +164,8 @@ export const featuredProjects: FeaturedProjectData[] = [
     id: "pitchpal",
     category: "AI Product",
     title: "PitchPal",
-    role: "Founder · Full-Stack Engineer",
-    period: "Jun 2025",
+    role: "Founding Software Engineer",
+    period: "Jun 2025 – Aug 2025",
     description:
       "A **voice + coding interview simulator** that adapts to your answers.",
     bullets: [
@@ -181,8 +189,8 @@ export const featuredProjects: FeaturedProjectData[] = [
     id: "growvio",
     category: "AI Product",
     title: "Growvio",
-    role: "Co-Founder · Full-Stack + Product",
-    period: "Oct 2025",
+    role: "Founding Software Engineer",
+    period: "Oct 2025 – Feb 2026",
     description:
       "AI that generates **daily tasks** for founders, with **dashboards** to track progress.",
     bullets: [
