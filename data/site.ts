@@ -102,7 +102,7 @@ export const experience: ExperienceEntry[] = [
     id: "lvl3",
     company: "lvl3.ai",
     role: "Software Engineer · Part-time",
-    period: "Jan 2026 – Jul 2026",
+    period: "June 2026",
     summary: "**iOS app development** and **UX/UI web development**.",
     bullets: [
       "Built features for a native **iOS app**",
