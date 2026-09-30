@@ -99,12 +99,16 @@ export const experience: ExperienceEntry[] = [
     featured: true,
   },
   {
-    // TODO: add a `summary`, `bullets`, and `tags` once details are confirmed
     id: "lvl3",
     company: "lvl3.ai",
     role: "Software Engineer · Part-time",
     period: "Jan 2026 – Jul 2026",
-    bullets: [],
+    summary: "**iOS app development** and **UX/UI web development**.",
+    bullets: [
+      "Built features for a native **iOS app**",
+      "Designed and built **UX/UI** for the web app",
+    ],
+    tags: ["iOS", "UX/UI", "Web Development"],
   },
   {
     id: "growvio",
