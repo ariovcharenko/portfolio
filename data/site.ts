@@ -72,6 +72,7 @@ export interface ExperienceEntry {
   id: string;
   company: string;
   href?: string;
+  logo?: string;
   role: string;
   period?: string;
   summary?: string;
@@ -85,6 +86,7 @@ export const experience: ExperienceEntry[] = [
     id: "xsolla",
     company: "Xsolla",
     href: "https://xsolla.com",
+    logo: "/images/xsolla-logo.jpg",
     role: "Software Engineer · Internship",
     period: "May 2026 – Aug 2026",
     summary: "**Event and networking features** in Xsolla's **React Native** app.",

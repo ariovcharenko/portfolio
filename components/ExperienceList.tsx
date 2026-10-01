@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ScrollFadeIn from "./ScrollFadeIn";
 import Chip from "./Chip";
 import Rich from "./Rich";
@@ -36,25 +37,36 @@ export default function ExperienceList({ entries }: { entries: ExperienceEntry[]
                   {entry.featured && (
                     <p className="mb-2 font-mono text-xs uppercase tracking-widest text-accent">Most recent</p>
                   )}
-                  <h3
-                    className={`font-serif tracking-tight text-ink ${
-                      entry.featured ? "text-3xl sm:text-4xl" : "text-2xl"
-                    }`}
-                  >
-                    {entry.href ? (
-                      <a
-                        href={entry.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-2 transition-colors hover:text-accent"
-                      >
-                        {entry.company}
-                        <ArrowUpRight className="h-4 w-4 text-neutral-400 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-accent" />
-                      </a>
-                    ) : (
-                      entry.company
+                  <div className="flex items-center gap-3">
+                    {entry.logo && (
+                      <Image
+                        src={entry.logo}
+                        alt={`${entry.company} logo`}
+                        width={44}
+                        height={44}
+                        className="h-9 w-9 flex-none rounded-lg border border-neutral-200 object-cover sm:h-11 sm:w-11"
+                      />
                     )}
-                  </h3>
+                    <h3
+                      className={`font-serif tracking-tight text-ink ${
+                        entry.featured ? "text-3xl sm:text-4xl" : "text-2xl"
+                      }`}
+                    >
+                      {entry.href ? (
+                        <a
+                          href={entry.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group/link inline-flex items-center gap-2 transition-colors hover:text-accent"
+                        >
+                          {entry.company}
+                          <ArrowUpRight className="h-4 w-4 text-neutral-400 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 group-hover/link:text-accent" />
+                        </a>
+                      ) : (
+                        entry.company
+                      )}
+                    </h3>
+                  </div>
                   <p className="mt-1 text-sm font-medium text-neutral-700 sm:text-base">{entry.role}</p>
                 </div>
                 {entry.period && (
