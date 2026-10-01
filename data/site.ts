@@ -164,6 +164,28 @@ export interface FeaturedProjectData {
 
 export const featuredProjects: FeaturedProjectData[] = [
   {
+    id: "job-copilot",
+    category: "AI Product",
+    title: "Job Copilot",
+    role: "Personal project",
+    period: "2026",
+    description:
+      "Paste a job link and it checks the posting against your **must-haves**, scores your **skills match**, and writes a **tailored resume** from only your real experience.",
+    bullets: [
+      "Checks a job against your **level, degree, location, and work auth**",
+      "Generates a **one-page tailored resume**, downloadable as a Word file",
+      "Tracks every application's **stage and follow-ups**, with CSV import",
+      "**Local-first**: your data stays in the browser and talks only to your own Claude API key",
+    ],
+    stack: ["Next.js", "TypeScript", "Claude API", "Local-first storage"],
+    media: [
+      { type: "image", src: "/images/jobcopilot1.jpg", label: "Landing page" },
+      { type: "image", src: "/images/jobcopilot2.jpg", label: "Job posting and skills match" },
+      { type: "image", src: "/images/jobcopilot3.jpg", label: "Skills match and tailored resume" },
+    ],
+    links: [{ label: "Try it live", href: "https://job-copilot-arina-ovcharenkos-projects.vercel.app/" }],
+  },
+  {
     id: "pitchpal",
     category: "AI Product",
     title: "PitchPal",
