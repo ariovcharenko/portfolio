@@ -8,7 +8,6 @@ import Marquee from "@/components/Marquee";
 import SpotlightCard from "@/components/SpotlightCard";
 import ExperienceList from "@/components/ExperienceList";
 import FeaturedProject from "@/components/FeaturedProject";
-import JobCopilotProject from "@/components/JobCopilotProject";
 import MoreProjectCard from "@/components/MoreProjectCard";
 import Chip from "@/components/Chip";
 import Rich from "@/components/Rich";
@@ -20,7 +19,6 @@ import {
   stackTicker,
   experience,
   featuredProjects,
-  jobCopilotProject,
   moreProjects,
   skillGroups,
   education,
@@ -198,9 +196,8 @@ export default function Home() {
         title="Selected work"
       >
         <div className="space-y-8 sm:space-y-10">
-          <JobCopilotProject project={jobCopilotProject} />
           {featuredProjects.map((project, index) => (
-            <FeaturedProject key={project.id} project={project} index={index + 1} />
+            <FeaturedProject key={project.id} project={project} index={index} />
           ))}
         </div>
 
