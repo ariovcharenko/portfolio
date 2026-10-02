@@ -172,13 +172,12 @@ export const featuredProjects: FeaturedProjectData[] = [
     role: "Personal project",
     period: "2026",
     description:
-      "Paste a job link. See in seconds if it's worth applying, get a one-page resume tailored to it, and keep every application tracked.",
+      "Paste a job link and find out if it's worth applying to.",
     bullets: [
-      "**Paste a job link** from any job board, or the description itself",
-      "Get a **skills match score** and a clear verdict on whether to apply",
-      "Set your **must-haves**, like location, sponsorship and experience level, and every job is checked against them",
-      "**Tailor your resume** to the job in one click, using only facts from your own experience",
-      "**Track every application**, with company, role, match and dates filled in automatically",
+      "**Skills match score** and a clear apply verdict",
+      "Checks your **must-haves**, like location and sponsorship",
+      "**Tailors your resume** to the job in one click",
+      "**Tracks every application** automatically",
     ],
     stack: ["Next.js", "TypeScript", "Claude API", "IndexedDB", "Vercel"],
     media: [
