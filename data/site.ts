@@ -150,6 +150,96 @@ export const experience: ExperienceEntry[] = [
   },
 ];
 
+export interface JobCopilotStep {
+  title: string;
+  description: string;
+  image: string;
+  width: number;
+  height: number;
+  alt: string;
+}
+
+export interface JobCopilotData {
+  category: string;
+  title: string;
+  role: string;
+  period: string;
+  pitch: string;
+  steps: JobCopilotStep[];
+  highlights: string[];
+  tech: string;
+  disclaimer: string;
+  links: { label: string; href: string }[];
+}
+
+export const jobCopilotProject: JobCopilotData = {
+  category: "AI Product",
+  title: "Job Copilot",
+  role: "Personal project",
+  period: "2026",
+  pitch:
+    "Paste a job link. See in seconds if it's worth applying, get a one-page resume tailored to it, and keep every application tracked.",
+  steps: [
+    {
+      title: "Paste a job link",
+      description: "Drop in a link from Greenhouse, Lever or any job board, or paste the description. That's the only input.",
+      image: "/images/jobcopilot-step1-paste.jpg",
+      width: 1340,
+      height: 1000,
+      alt: "Job Copilot home screen with a field to paste a job link and an Analyze button",
+    },
+    {
+      title: "See if you should apply",
+      description:
+        "It scores how well your skills match the job and gives a clear verdict: Apply, or a weak match worth skipping.",
+      image: "/images/jobcopilot-step2-score.jpg",
+      width: 1200,
+      height: 830,
+      alt: "Job verdict showing a 100% skills match and an Apply recommendation",
+    },
+    {
+      title: "Check your must-haves",
+      description:
+        "Set what matters most to you, like location, sponsorship, level and degree, and every job is checked against it. Skills you're missing are struck through.",
+      image: "/images/jobcopilot-step3-musthaves.jpg",
+      width: 1200,
+      height: 896,
+      alt: "A weak 38% match with must-haves for level, degree, location, work authorization and clearance all checked, and missing skills struck through",
+    },
+    {
+      title: "Tailor your resume",
+      description:
+        "One click writes a one-page resume for that job using only facts from your own experience. Edit any bullet, then download it as .docx.",
+      image: "/images/jobcopilot-step4-resume.jpg",
+      width: 1200,
+      height: 1066,
+      alt: "A one-page resume tailored to a data platform role, open for review and editing",
+    },
+    {
+      title: "Track every application",
+      description:
+        "Each job lands in your tracker with its company, role, match, location and dates filled in automatically, plus its resume one click away.",
+      image: "/images/jobcopilot-step5-tracker.jpg",
+      width: 1400,
+      height: 897,
+      alt: "Applications tracker with response rate stats and a table of jobs with match, stage, location, applied date and resume preview",
+    },
+  ],
+  highlights: [
+    "Private by design: data stays in your browser",
+    "Never submits applications for you",
+    "Automatic backups",
+    "Export to .docx",
+  ],
+  tech: "Next.js, React, TypeScript, Tailwind, IndexedDB (Dexie), Claude API, Vitest (840+ tests), deployed on Vercel",
+  disclaimer: "Screenshots use a fictional candidate, not my real data.",
+  links: [
+    { label: "Try it live", href: "https://job-copilot-arina-ovcharenkos-projects.vercel.app/" },
+    // Code link goes here once the repo is public:
+    // { label: "View code", href: "https://github.com/ariovcharenko/job_application" },
+  ],
+};
+
 export interface FeaturedProjectData {
   id: string;
   category: string;
@@ -165,28 +255,6 @@ export interface FeaturedProjectData {
 }
 
 export const featuredProjects: FeaturedProjectData[] = [
-  {
-    id: "job-copilot",
-    category: "AI Product",
-    title: "Job Copilot",
-    role: "Personal project",
-    period: "2026",
-    description:
-      "Paste a job link to see if it's one worth applying to, then let it handle the busywork of actually applying.",
-    bullets: [
-      "Paste a link to see if a job **matches what you're looking for**",
-      "It **analyzes how your skills match** the role",
-      "**Tailors your resume** to that job automatically",
-      "Lets you **track and store** every job you're applying to, in one place",
-    ],
-    stack: ["Next.js", "TypeScript", "Claude API", "Local-first storage"],
-    media: [
-      { type: "image", src: "/images/jobcopilot1.jpg", label: "Paste a job link" },
-      { type: "image", src: "/images/jobcopilot2.jpg", label: "See your skills match" },
-      { type: "image", src: "/images/jobcopilot3.jpg", label: "Get a tailored resume" },
-    ],
-    links: [{ label: "Try it live", href: "https://job-copilot-arina-ovcharenkos-projects.vercel.app/" }],
-  },
   {
     id: "pitchpal",
     category: "AI Product",
